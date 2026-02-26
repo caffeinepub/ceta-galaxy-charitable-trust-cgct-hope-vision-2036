@@ -1,339 +1,216 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { useSubmitSubscription } from '../hooks/useQueries';
-import { Phone, Mail, Heart, ExternalLink } from 'lucide-react';
-import { SiFacebook, SiInstagram, SiLinkedin, SiYoutube } from 'react-icons/si';
-import LeafMotif from './LeafMotif';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+import { Mail, Phone, MapPin, Facebook, Youtube, Send, Heart } from 'lucide-react';
+import { useActor } from '../hooks/useActor';
+import { useMutation } from '@tanstack/react-query';
 
-const Footer: React.FC = () => {
+function useSubmitSubscription() {
+  const { actor } = useActor();
+  return useMutation({
+    mutationFn: async (email: string) => {
+      if (!actor) throw new Error('Actor not available');
+      return actor.submitSubscription(email);
+    },
+  });
+}
+
+export default function Footer() {
   const { t } = useLanguage();
   const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  const submitSubscription = useSubmitSubscription();
+  const [subscribed, setSubscribed] = useState(false);
+  const [ctaRef, ctaVisible] = useIntersectionObserver(0.1);
+  const { mutate: subscribe, isPending } = useSubmitSubscription();
 
-  const handleSubscribe = async (e: React.FormEvent) => {
+  const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
-    try {
-      await submitSubscription.mutateAsync(email.trim());
-      setSubmitted(true);
-      setEmail('');
-    } catch {
-      // error handled via mutation state
-    }
+    subscribe(email.trim(), {
+      onSuccess: () => {
+        setSubscribed(true);
+        setEmail('');
+      },
+    });
   };
 
-  const scrollToSurvey = () => {
-    const el = document.getElementById('survey');
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const year = new Date().getFullYear();
-  const appId = encodeURIComponent(typeof window !== 'undefined' ? window.location.hostname : 'cgct-hope-vision-2036');
-
-  const socialLinks = [
-    { Icon: SiFacebook, label: 'Facebook', href: 'https://www.facebook.com/Cetagalaxytrust' },
-    { Icon: SiInstagram, label: 'Instagram', href: 'https://www.instagram.com/cgct_vision_2036' },
-    { Icon: SiLinkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/company/ceta-galaxy-charitable-trust/' },
-    { Icon: SiYoutube, label: 'YouTube', href: 'https://youtube.com/@cetagalaxycharitabletrust' },
-  ];
+  const appId = encodeURIComponent(window.location.hostname || 'cgct-hope-vision');
 
   return (
-    <footer id="contact" className="relative overflow-hidden" style={{ backgroundColor: 'var(--maroon-dark)' }}>
-      <LeafMotif count={4} opacity={0.05} color="#8FAF7E" />
-
-      {/* Top wave */}
-      <div className="relative">
-        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full block" style={{ marginBottom: '-2px' }}>
-          <path d="M0 0L1440 0L1440 40C1200 0 960 60 720 40C480 20 240 60 0 40L0 0Z" fill="white" />
-        </svg>
-      </div>
-
+    <footer id="contact" className="bg-maroon-900 text-white">
       {/* CTA Banner */}
       <div
-        className="relative z-10 py-16 px-4 text-center"
-        style={{ background: 'linear-gradient(135deg, #3A0A0A 0%, #6B1A1A 50%, #4A1010 100%)' }}
+        ref={ctaRef}
+        className={`bg-gold-500 py-10 px-4 transition-all duration-700 ${
+          ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}
       >
-        <LeafMotif count={3} opacity={0.04} color="#C9A84C" />
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-2 leading-tight"
-            style={{ fontFamily: 'Merriweather, serif' }}
-          >
-            {t('footer.cta')}
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-display font-bold text-maroon-900 mb-4">
+            Be Part of the Vision 2036 Journey
           </h2>
-          <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-black mb-10 leading-tight"
-            style={{ fontFamily: 'Merriweather, serif', color: 'var(--gold)' }}
-          >
-            {t('footer.cta2')}
-          </h2>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="https://forms.gle/f6TvTypSkkRnmS7GA"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-gold inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold"
-            >
-              🎓 {t('footer.btn.register')}
-            </a>
-            <button
-              onClick={scrollToSurvey}
-              className="btn-outline-gold inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold"
-            >
-              📊 {t('footer.btn.survey')}
-            </button>
-            <button
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold border-2 transition-all duration-200"
-              style={{ borderColor: 'var(--sage)', color: 'var(--sage)' }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--sage)';
-                (e.currentTarget as HTMLElement).style.color = 'white';
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent';
-                (e.currentTarget as HTMLElement).style.color = 'var(--sage)';
-              }}
-            >
-              🤝 {t('footer.btn.volunteer')}
-            </button>
-            <button
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold border-2 transition-all duration-200"
-              style={{ borderColor: 'rgba(255,255,255,0.4)', color: 'rgba(255,255,255,0.8)' }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(255,255,255,0.1)';
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent';
-              }}
-            >
-              💛 {t('footer.btn.support')}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Footer Content */}
-      <div className="relative z-10 py-16 px-4" style={{ backgroundColor: '#2A0808' }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
-
-            {/* Column 1: Logos + About */}
-            <div className="lg:col-span-1">
-              <div className="flex items-center gap-3 mb-4">
-                <img
-                  src="/assets/CETA Logo-Photoroom-1.png"
-                  alt="CETA Galaxy Charitable Trust"
-                  className="h-14 w-14 object-contain"
-                />
-                <img
-                  src="/assets/HOPE Logo_0-Photoroom-1.png"
-                  alt="HOPE - Helping Outstanding Pupils in Education"
-                  className="h-14 w-14 object-contain"
-                />
-              </div>
-              <h3
-                className="text-base font-black text-white mb-2"
-                style={{ fontFamily: 'Merriweather, serif' }}
-              >
-                CETA Galaxy Charitable Trust
-              </h3>
-              <p className="text-xs text-white/60 leading-relaxed mb-4">
-                Helping Outstanding Pupils in Education since 2010. Building futures, one student at a time.
-              </p>
-              {/* Social Icons */}
-              <div>
-                <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: 'var(--gold)' }}>
-                  {t('footer.social')}
-                </p>
-                <div className="flex gap-3">
-                  {socialLinks.map(({ Icon, label, href }) => (
-                    <a
-                      key={label}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={label}
-                      className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200"
-                      style={{ backgroundColor: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.6)' }}
-                      onMouseEnter={e => {
-                        (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--gold)';
-                        (e.currentTarget as HTMLElement).style.color = 'var(--maroon-dark)';
-                      }}
-                      onMouseLeave={e => {
-                        (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(255,255,255,0.08)';
-                        (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.6)';
-                      }}
-                    >
-                      <Icon size={16} />
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Column 2: Quick Links */}
-            <div>
-              <h4
-                className="text-sm font-black mb-5 tracking-widest uppercase"
-                style={{ color: 'var(--gold)' }}
-              >
-                {t('footer.links.title')}
-              </h4>
-              <ul className="space-y-3">
-                {[
-                  { label: 'nav.home', href: '#home' },
-                  { label: 'nav.about', href: '#about' },
-                  { label: 'nav.vision', href: '#vision' },
-                  { label: 'nav.reunion', href: '#reunion' },
-                  { label: 'nav.survey', href: '#survey' },
-                ].map(link => (
-                  <li key={link.label}>
-                    <button
-                      onClick={() => {
-                        const el = document.querySelector(link.href);
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="text-sm text-white/60 hover:text-white transition-colors duration-200 text-left"
-                    >
-                      → {t(link.label)}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Column 3: Contact */}
-            <div>
-              <h4
-                className="text-sm font-black mb-5 tracking-widest uppercase"
-                style={{ color: 'var(--gold)' }}
-              >
-                {t('footer.contact.title')}
-              </h4>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <Phone size={16} style={{ color: 'var(--gold)', flexShrink: 0, marginTop: '2px' }} />
-                  <div>
-                    <p className="text-xs text-white/50 mb-1">Syam S.</p>
-                    <a
-                      href="tel:+916282923370"
-                      className="text-sm text-white/80 hover:text-white transition-colors font-medium"
-                    >
-                      +91 6282923370
-                    </a>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Phone size={16} style={{ color: 'var(--gold)', flexShrink: 0, marginTop: '2px' }} />
-                  <div>
-                    <p className="text-xs text-white/50 mb-1">Athira S.</p>
-                    <a
-                      href="tel:+919544218988"
-                      className="text-sm text-white/80 hover:text-white transition-colors font-medium"
-                    >
-                      +91 9544218988
-                    </a>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Mail size={16} style={{ color: 'var(--gold)', flexShrink: 0, marginTop: '2px' }} />
-                  <div>
-                    <p className="text-xs text-white/50 mb-1">Email</p>
-                    <a
-                      href="mailto:info@cetagalaxytrust.com"
-                      className="text-sm text-white/80 hover:text-white transition-colors font-medium"
-                    >
-                      info@cetagalaxytrust.com
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Column 4: Newsletter */}
-            <div>
-              <h4
-                className="text-sm font-black mb-5 tracking-widest uppercase"
-                style={{ color: 'var(--gold)' }}
-              >
-                {t('footer.newsletter.title')}
-              </h4>
-              {submitted ? (
-                <div
-                  className="rounded-xl p-4 text-sm font-semibold"
-                  style={{ backgroundColor: 'rgba(143,175,126,0.15)', color: 'var(--sage-light)', border: '1px solid rgba(143,175,126,0.3)' }}
-                >
-                  ✅ {t('footer.newsletter.success')}
-                </div>
-              ) : (
-                <form onSubmit={handleSubscribe} className="space-y-3">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                    placeholder={t('footer.newsletter.placeholder')}
-                    required
-                    className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all duration-200"
-                    style={{
-                      backgroundColor: 'rgba(255,255,255,0.08)',
-                      border: '1px solid rgba(255,255,255,0.15)',
-                      color: 'white',
-                    }}
-                    onFocus={e => {
-                      (e.target as HTMLElement).style.borderColor = 'var(--gold)';
-                    }}
-                    onBlur={e => {
-                      (e.target as HTMLElement).style.borderColor = 'rgba(255,255,255,0.15)';
-                    }}
-                  />
-                  <button
-                    type="submit"
-                    disabled={submitSubscription.isPending}
-                    className="btn-gold w-full py-3 rounded-xl text-sm font-bold disabled:opacity-60 disabled:cursor-not-allowed"
-                  >
-                    {submitSubscription.isPending ? '...' : t('footer.newsletter.btn')}
-                  </button>
-                  {submitSubscription.isError && (
-                    <p className="text-xs" style={{ color: '#FF8080' }}>
-                      {t('footer.newsletter.error')}
-                    </p>
-                  )}
-                </form>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Bar */}
-      <div
-        className="relative z-10 py-5 px-4 text-center"
-        style={{ backgroundColor: '#1A0404', borderTop: '1px solid rgba(255,255,255,0.06)' }}
-      >
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-white/40">
-            {t('footer.copyright').replace('{year}', String(year))}
+          <p className="text-maroon-800 mb-6 text-sm md:text-base">
+            Join thousands of CGCT community members shaping the future of Christian education
           </p>
-          <p className="text-xs text-white/40 flex items-center gap-1">
-            {t('footer.built')}
-            <Heart size={12} className="text-red-400 fill-red-400" />
-            {t('footer.built2')}{' '}
+          <div className="flex flex-wrap gap-3 justify-center">
+            <button
+              onClick={() => scrollTo('survey')}
+              className="px-6 py-2.5 bg-maroon-800 hover:bg-maroon-700 text-white font-semibold rounded-full text-sm transition-colors"
+            >
+              Take the Survey
+            </button>
+            <button
+              onClick={() => scrollTo('reunion')}
+              className="px-6 py-2.5 bg-white hover:bg-maroon-50 text-maroon-800 font-semibold rounded-full text-sm transition-colors"
+            >
+              Join the Reunion
+            </button>
+            <button
+              onClick={() => scrollTo('vision')}
+              className="px-6 py-2.5 bg-maroon-900 hover:bg-maroon-800 text-white font-semibold rounded-full text-sm transition-colors"
+            >
+              Explore Vision
+            </button>
+            <button
+              onClick={() => scrollTo('about')}
+              className="px-6 py-2.5 border-2 border-maroon-800 text-maroon-800 hover:bg-maroon-800 hover:text-white font-semibold rounded-full text-sm transition-colors"
+            >
+              Learn About CGCT
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Footer */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid md:grid-cols-3 gap-10">
+          {/* Logos & About */}
+          <div>
+            <div className="flex items-center gap-4 mb-4">
+              {/* CETA Galaxy Logo - Version 16 asset */}
+              <img
+                src="/assets/generated/ceta-galaxy-logo.dim_512x512.png"
+                alt="CETA Galaxy"
+                className="h-14 w-auto object-contain"
+              />
+              <img
+                src="/assets/HOPE Logo_0-Photoroom-1.png"
+                alt="HOPE"
+                className="h-14 w-auto object-contain"
+              />
+            </div>
+            <p className="text-white/70 text-sm leading-relaxed mb-4">
+              CGCT HOPE Vision 2036 is a strategic initiative to transform Christian education in Kerala, 
+              building on a century of excellence and faith.
+            </p>
+            <div className="flex gap-3">
+              <a href="#" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                <Facebook size={16} />
+              </a>
+              <a href="#" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                <Youtube size={16} />
+              </a>
+              <a href="#" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+                <Mail size={16} />
+              </a>
+            </div>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="font-bold text-gold-400 mb-4 uppercase tracking-wide text-sm">Contact Us</h3>
+            <div className="space-y-3">
+              <div className="flex items-start gap-3">
+                <MapPin className="text-gold-400 flex-shrink-0 mt-0.5" size={16} />
+                <p className="text-white/70 text-sm">CGCT Education Board, Kerala, India</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="text-gold-400 flex-shrink-0" size={16} />
+                <p className="text-white/70 text-sm">+91 XXXXX XXXXX</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail className="text-gold-400 flex-shrink-0" size={16} />
+                <p className="text-white/70 text-sm">hope@cgct.edu.in</p>
+              </div>
+            </div>
+
+            <div className="mt-6">
+              <h4 className="font-semibold text-white/90 text-sm mb-2">Quick Links</h4>
+              <div className="grid grid-cols-2 gap-1">
+                {['about', 'vision', 'reunion', 'survey'].map(id => (
+                  <button
+                    key={id}
+                    onClick={() => scrollTo(id)}
+                    className="text-left text-white/60 hover:text-gold-400 text-xs capitalize transition-colors py-0.5"
+                  >
+                    {id.charAt(0).toUpperCase() + id.slice(1)}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <h3 className="font-bold text-gold-400 mb-4 uppercase tracking-wide text-sm">
+              {t('footer.subscribe')}
+            </h3>
+            <p className="text-white/70 text-sm mb-4">
+              Stay updated with the latest news and developments from CGCT HOPE Vision 2036.
+            </p>
+            {subscribed ? (
+              <div className="bg-sage-600/30 border border-sage-500/40 rounded-xl p-4 text-center">
+                <p className="text-sage-300 font-semibold text-sm">✓ Thank you for subscribing!</p>
+                <p className="text-white/60 text-xs mt-1">You'll receive updates soon.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubscribe} className="flex gap-2">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  placeholder={t('footer.email.placeholder')}
+                  className="flex-1 bg-white/10 border border-white/20 rounded-full px-4 py-2 text-sm text-white placeholder-white/40 focus:outline-none focus:border-gold-400 transition-colors"
+                  required
+                />
+                <button
+                  type="submit"
+                  disabled={isPending}
+                  className="w-10 h-10 rounded-full bg-gold-500 hover:bg-gold-400 text-maroon-900 flex items-center justify-center flex-shrink-0 transition-colors disabled:opacity-50"
+                >
+                  {isPending ? (
+                    <div className="w-4 h-4 border-2 border-maroon-900/30 border-t-maroon-900 rounded-full animate-spin" />
+                  ) : (
+                    <Send size={16} />
+                  )}
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Copyright Bar */}
+      <div className="border-t border-white/10 py-4 px-4">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/50">
+          <p>© {new Date().getFullYear()} CGCT Education Board. {t('footer.rights')}.</p>
+          <p className="flex items-center gap-1">
+            Built with <Heart size={12} className="text-gold-400 fill-gold-400" /> using{' '}
             <a
               href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${appId}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/60 hover:text-white transition-colors underline underline-offset-2 flex items-center gap-1"
+              className="text-gold-400 hover:text-gold-300 transition-colors"
             >
-              caffeine.ai <ExternalLink size={10} />
+              caffeine.ai
             </a>
           </p>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

@@ -2,12 +2,26 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-save-the-uploaded-hope-logo-hope-logo-0-photoroom-1-png-circular-design-with-two-cupped-hands-and-helping-outstanding-pupils-in-education-text-as-a-static-asset-at-frontend-public-assets-generated-hope-logo-png-and-replace-every-existing-hope-logo-image-reference-in-navigation-tsx-herosection-tsx-and-footer-tsx-with-this-new-file-preserving-the-original-size-and-position-in-each-location",
-      "featureTitle": "Save the uploaded HOPE logo (HOPE Logo_0-Photoroom-1.png — circular design with two cupped hands and 'Helping Outstanding Pupils in Education' text) as a static asset at frontend/public/assets/generated/hope-logo.png and replace every existing HOPE logo image reference in Navigation.tsx, HeroSection.tsx, and Footer.tsx with this new file, preserving the original size and position in each location.",
+      "featureId": "feature-restore-the-full-frontend-application-to-the-version-9-state-preserving-all-its-layouts-sections-content-styling-and-functionality-exactly-as-they-were-in-that-version",
+      "featureTitle": "Restore the full frontend application to the Version 9 state, preserving all its layouts, sections, content, styling, and functionality exactly as they were in that version.",
       "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/AboutSection.tsx",
+        "frontend/src/components/DigitalImpactSection.tsx",
         "frontend/src/components/Footer.tsx",
         "frontend/src/components/HeroSection.tsx",
-        "frontend/src/components/Navigation.tsx"
+        "frontend/src/components/LeafMotif.tsx",
+        "frontend/src/components/Navigation.tsx",
+        "frontend/src/components/ReunionSection.tsx",
+        "frontend/src/components/StakeholderVoicesSection.tsx",
+        "frontend/src/components/SurveySection.tsx",
+        "frontend/src/components/VisionPillarsSection.tsx",
+        "frontend/src/contexts/LanguageContext.tsx",
+        "frontend/src/hooks/useCountUp.ts",
+        "frontend/src/hooks/useCountdown.ts",
+        "frontend/src/hooks/useIntersectionObserver.ts",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
       ],
       "components": [
         "authorization@4.0.0",
@@ -23,8 +37,8 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-save-the-uploaded-ceta-galaxy-charitable-trust-logo-ceta-logo-photoroom-1-png-circular-design-with-globe-ribbon-and-ceta-galaxy-charitable-trust-text-as-a-static-asset-at-frontend-public-assets-generated-ceta-logo-png-and-replace-every-existing-ceta-logo-image-reference-in-navigation-tsx-herosection-tsx-and-footer-tsx-with-this-new-file-preserving-the-original-size-and-position-in-each-location",
-      "featureTitle": "Save the uploaded CETA Galaxy Charitable Trust logo (CETA Logo-Photoroom-1.png — circular design with globe, ribbon, and 'CETA Galaxy Charitable Trust' text) as a static asset at frontend/public/assets/generated/ceta-logo.png and replace every existing CETA logo image reference in Navigation.tsx, HeroSection.tsx, and Footer.tsx with this new file, preserving the original size and position in each location.",
+      "featureId": "feature-replace-the-ceta-galaxy-logo-used-in-version-9-with-the-ceta-galaxy-logo-asset-from-version-16-update-all-references-to-the-ceta-galaxy-logo-in-navigation-tsx-herosection-tsx-and-footer-tsx-to-use-the-version-16-logo-file",
+      "featureTitle": "Replace the CETA Galaxy logo used in Version 9 with the CETA Galaxy logo asset from Version 16. Update all references to the CETA Galaxy logo in Navigation.tsx, HeroSection.tsx, and Footer.tsx to use the Version 16 logo file.",
       "files": [
         "frontend/src/components/Footer.tsx",
         "frontend/src/components/HeroSection.tsx",

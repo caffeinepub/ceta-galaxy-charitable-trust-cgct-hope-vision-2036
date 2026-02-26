@@ -1,67 +1,127 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Replace CETA & HOPE logos with newly uploaded versions",
+  "title": "Rebuild Version 9 with CETA Galaxy logo from Version 16",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Replace all HOPE logo references with the new uploaded logo file (two cupped hands design with 'Helping Outstanding Pupils in Education' text)",
+      "summary": "Restore the full frontend application to the Version 9 state, preserving all layouts, sections, content, styling, and functionality exactly as they were in that version",
       "acceptanceCriteria": [
-        "The new HOPE logo (two hands / 'Helping Outstanding Pupils in Education') is displayed in the navbar, hero section, and footer.",
-        "No old HOPE logo image remains visible anywhere on the page.",
-        "Logo size and alignment are unchanged from Version 5."
+        "All page sections (Navigation, Hero, About, VisionPillars, Reunion, Survey, StakeholderVoices, DigitalImpact, Footer) match Version 9 exactly",
+        "All Version 9 styling, animations, and content are intact"
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/generated/hope-logo.png",
-          "operation": "create",
-          "description": "Save the uploaded HOPE Logo_0-Photoroom-1.png (circular design with two cupped hands and 'Helping Outstanding Pupils in Education' text) as a static asset at this exact path to replace the existing generated hope-logo file."
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Restore the App.tsx component structure to match Version 9 exactly, ensuring all sections are rendered in the correct order with LanguageProvider wrapper"
         },
         {
           "path": "frontend/src/components/Navigation.tsx",
           "operation": "modify",
-          "description": "Update the HOPE logo image src attribute from the current path to reference '/assets/generated/hope-logo.png', preserving the existing className, alt text, width, height, and all other attributes to maintain the original size and position."
+          "description": "Restore Navigation component to Version 9 state with scroll-aware styling, smooth-scroll nav links, language toggle, and dual logos layout (will reference Version 16 CETA logo in REQ-2)"
         },
         {
           "path": "frontend/src/components/HeroSection.tsx",
           "operation": "modify",
-          "description": "Update the HOPE logo image src attribute from the current path to reference '/assets/generated/hope-logo.png', preserving the existing className, alt text, dimensions, and all other styling to maintain the original size and position in the hero section."
+          "description": "Restore HeroSection to Version 9 with animated countdown timer, count-up stat cards, logo row, headline, scroll-to-survey CTA, and maroon gradient background (will reference Version 16 CETA logo in REQ-2)"
+        },
+        {
+          "path": "frontend/src/components/AboutSection.tsx",
+          "operation": "modify",
+          "description": "Restore AboutSection to Version 9 state with animated timeline (2010–2026), descriptive paragraphs, chairman profile card with quote, and intersection observer scroll animations"
+        },
+        {
+          "path": "frontend/src/components/VisionPillarsSection.tsx",
+          "operation": "modify",
+          "description": "Restore VisionPillarsSection to Version 9 with 4-pillar strategic framework, animated cards using intersection observer, icons, titles, checklist items, and distinct brand colors"
+        },
+        {
+          "path": "frontend/src/components/ReunionSection.tsx",
+          "operation": "modify",
+          "description": "Restore ReunionSection to Version 9 detailing the April 12, 2026 HOPE Alumni Reunion event with reunion poster, event details card, purpose icons grid, participant category cards, and intersection-observer animations"
+        },
+        {
+          "path": "frontend/src/components/SurveySection.tsx",
+          "operation": "modify",
+          "description": "Restore SurveySection to Version 9 with links to English and Malayalam Microsoft Forms surveys, confidentiality badge, branded CGCT HOPE Vision 2036 poster card, and scroll animations"
+        },
+        {
+          "path": "frontend/src/components/StakeholderVoicesSection.tsx",
+          "operation": "modify",
+          "description": "Restore StakeholderVoicesSection to Version 9 showcasing six stakeholder insight cards from February 2026 meetings with icons, titles, descriptions, meeting badge pills, and scroll-triggered animations"
+        },
+        {
+          "path": "frontend/src/components/DigitalImpactSection.tsx",
+          "operation": "modify",
+          "description": "Restore DigitalImpactSection to Version 9 displaying four digital transformation initiatives as animated icon cards in a responsive grid with intersection observer"
         },
         {
           "path": "frontend/src/components/Footer.tsx",
           "operation": "modify",
-          "description": "Update the HOPE logo image src attribute from the current path to reference '/assets/generated/hope-logo.png', preserving the existing className, alt text, dimensions, and all other styling to maintain the original size and position in the footer."
+          "description": "Restore Footer to Version 9 with CTA banner, action buttons, dual organization logos, contact info, social media links, newsletter subscription form wired to backend, and copyright bar (will reference Version 16 CETA logo in REQ-2)"
+        },
+        {
+          "path": "frontend/src/components/LeafMotif.tsx",
+          "operation": "modify",
+          "description": "Restore LeafMotif decorative background component to Version 9 rendering up to 5 absolutely-positioned rotated diamond/leaf shapes with configurable count, opacity, and color"
+        },
+        {
+          "path": "frontend/src/contexts/LanguageContext.tsx",
+          "operation": "modify",
+          "description": "Restore LanguageContext to Version 9 providing bilingual (English/Malayalam) support with translation function t() and language toggle, with all UI string translations defined inline"
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Restore global stylesheet to Version 9 defining the CGCT design system with CSS custom properties for brand colors (maroon, gold, sage), Tailwind base/utilities, typography, and reusable animation and component utility classes"
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Restore Tailwind configuration to Version 9 defining custom brand colors (maroon, gold, sage, cream), typography/font families, animations, shadows, and plugin setup"
+        },
+        {
+          "path": "frontend/src/hooks/useCountdown.ts",
+          "operation": "modify",
+          "description": "Restore useCountdown hook to Version 9 counting down to 12 April 2026, 9:00 AM IST, updating every second and returning days, hours, minutes, seconds, and expiry flag"
+        },
+        {
+          "path": "frontend/src/hooks/useCountUp.ts",
+          "operation": "modify",
+          "description": "Restore useCountUp hook to Version 9 animating a number from 0 to target value over a given duration using requestAnimationFrame with ease-out cubic curve"
+        },
+        {
+          "path": "frontend/src/hooks/useIntersectionObserver.ts",
+          "operation": "modify",
+          "description": "Restore useIntersectionObserver hook to Version 9 using IntersectionObserver to set isVisible flag once element enters viewport, then disconnect observer"
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Replace all CETA logo references with the new uploaded logo file (globe and ribbon design with 'CETA Galaxy Charitable Trust' text)",
+      "summary": "Replace the CETA Galaxy logo used in Version 9 with the CETA Galaxy logo asset from Version 16 and update all references in Navigation.tsx, HeroSection.tsx, and Footer.tsx to use the Version 16 logo file",
       "acceptanceCriteria": [
-        "The new CETA Galaxy Charitable Trust logo (globe/ribbon design) is displayed in the navbar, hero section, and footer.",
-        "No old CETA logo image remains visible anywhere on the page.",
-        "Logo size and alignment are unchanged from Version 5."
+        "The CETA Galaxy logo displayed in the Navigation bar matches the Version 16 logo asset",
+        "The CETA Galaxy logo displayed in the HeroSection matches the Version 16 logo asset",
+        "The CETA Galaxy logo displayed in the Footer matches the Version 16 logo asset",
+        "The HOPE logo remains unchanged from Version 9"
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/generated/ceta-logo.png",
-          "operation": "create",
-          "description": "Save the uploaded CETA Logo-Photoroom-1.png (circular design with globe, ribbon, and 'CETA Galaxy Charitable Trust' text) as a static asset at this exact path to replace the existing generated ceta-logo file."
-        },
-        {
           "path": "frontend/src/components/Navigation.tsx",
           "operation": "modify",
-          "description": "Update the CETA logo image src attribute from the current path to reference '/assets/generated/ceta-logo.png', preserving the existing className, alt text, width, height, and all other attributes to maintain the original size and position."
+          "description": "Update the CETA Galaxy logo reference to use the Version 16 logo asset from frontend/public/assets/generated/ceta-galaxy-logo.dim_512x512.png while keeping the HOPE logo unchanged from Version 9"
         },
         {
           "path": "frontend/src/components/HeroSection.tsx",
           "operation": "modify",
-          "description": "Update the CETA logo image src attribute from the current path to reference '/assets/generated/ceta-logo.png', preserving the existing className, alt text, dimensions, and all other styling to maintain the original size and position in the hero section."
+          "description": "Update the CETA Galaxy logo reference in the logo row to use the Version 16 logo asset from frontend/public/assets/generated/ceta-galaxy-logo.dim_512x512.png while keeping the HOPE logo unchanged from Version 9"
         },
         {
           "path": "frontend/src/components/Footer.tsx",
           "operation": "modify",
-          "description": "Update the CETA logo image src attribute from the current path to reference '/assets/generated/ceta-logo.png', preserving the existing className, alt text, dimensions, and all other styling to maintain the original size and position in the footer."
+          "description": "Update the CETA Galaxy logo reference in the dual organization logos section to use the Version 16 logo asset from frontend/public/assets/generated/ceta-galaxy-logo.dim_512x512.png while keeping the HOPE logo unchanged from Version 9"
         }
       ]
     }

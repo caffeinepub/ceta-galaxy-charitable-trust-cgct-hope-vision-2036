@@ -1,12 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Replace the existing CETA and HOPE logo images throughout the site with the newly uploaded versions.
+**Goal:** Restore the application to its Version 9 state while replacing the CETA Galaxy logo with the one from Version 16.
 
 **Planned changes:**
-- Save the uploaded HOPE logo (circular design with two cupped hands and "Helping Outstanding Pupils in Education" text) as `frontend/public/assets/generated/hope-logo.png`, replacing the existing file
-- Save the uploaded CETA Galaxy Charitable Trust logo (circular design with globe, ribbon, and "CETA Galaxy Charitable Trust" text) as `frontend/public/assets/generated/ceta-logo.png`, replacing the existing file
-- Update all HOPE logo image references in Navigation.tsx, HeroSection.tsx, and Footer.tsx to use the new file, preserving existing size and position
-- Update all CETA logo image references in Navigation.tsx, HeroSection.tsx, and Footer.tsx to use the new file, preserving existing size and position
+- Restore all frontend sections, layouts, content, styling, and functionality to exactly match Version 9 (Navigation, Hero, About, VisionPillars, Reunion, Survey, StakeholderVoices, DigitalImpact, Footer)
+- Replace the CETA Galaxy logo in Navigation.tsx, HeroSection.tsx, and Footer.tsx with the Version 16 logo asset (`ceta-galaxy-logo-light.dim_512x512.png`)
+- Keep the HOPE logo unchanged from Version 9
 
-**User-visible outcome:** The navbar, hero section, and footer all display the new HOPE and CETA logos while everything else on the site remains unchanged.
+**User-visible outcome:** The app looks and functions exactly like Version 9, but displays the Version 16 CETA Galaxy logo throughout the navigation, hero section, and footer.

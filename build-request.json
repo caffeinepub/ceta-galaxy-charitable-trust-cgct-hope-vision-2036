@@ -1,55 +1,56 @@
 {
   "kind": "build_request",
-  "title": "Replace CETA & HOPE logos with newly uploaded versions",
+  "title": "Rebuild Version 9 with CETA Galaxy logo from Version 16",
   "projectName": "CGCT HOPE Vision 2036",
-  "priority": "normal",
+  "priority": "high",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Save the uploaded HOPE logo (HOPE Logo_0-Photoroom-1.png — circular design with two cupped hands and 'Helping Outstanding Pupils in Education' text) as a static asset at frontend/public/assets/generated/hope-logo.png and replace every existing HOPE logo image reference in Navigation.tsx, HeroSection.tsx, and Footer.tsx with this new file, preserving the original size and position in each location.",
+      "text": "Restore the full frontend application to the Version 9 state, preserving all its layouts, sections, content, styling, and functionality exactly as they were in that version.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-latest"
+          "msg-4",
+          "msg-6"
         ],
         "quotes": [
-          "simply replace the existing ones in the same spots"
+          "Rest of Version 9 is perfect"
         ]
       },
       "acceptanceCriteria": [
-        "The new HOPE logo (two hands / 'Helping Outstanding Pupils in Education') is displayed in the navbar, hero section, and footer.",
-        "No old HOPE logo image remains visible anywhere on the page.",
-        "Logo size and alignment are unchanged from Version 5."
+        "All page sections (Navigation, Hero, About, VisionPillars, Reunion, Survey, StakeholderVoices, DigitalImpact, Footer) match Version 9 exactly",
+        "All Version 9 styling, animations, and content are intact"
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Save the uploaded CETA Galaxy Charitable Trust logo (CETA Logo-Photoroom-1.png — circular design with globe, ribbon, and 'CETA Galaxy Charitable Trust' text) as a static asset at frontend/public/assets/generated/ceta-logo.png and replace every existing CETA logo image reference in Navigation.tsx, HeroSection.tsx, and Footer.tsx with this new file, preserving the original size and position in each location.",
+      "text": "Replace the CETA Galaxy logo used in Version 9 with the CETA Galaxy logo asset from Version 16. Update all references to the CETA Galaxy logo in Navigation.tsx, HeroSection.tsx, and Footer.tsx to use the Version 16 logo file.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-latest"
+          "msg-4"
         ],
         "quotes": [
-          "simply replace the existing ones in the same spots"
+          "keep the CETA logo from Version 16"
         ]
       },
       "acceptanceCriteria": [
-        "The new CETA Galaxy Charitable Trust logo (globe/ribbon design) is displayed in the navbar, hero section, and footer.",
-        "No old CETA logo image remains visible anywhere on the page.",
-        "Logo size and alignment are unchanged from Version 5."
+        "The CETA Galaxy logo displayed in the Navigation bar matches the Version 16 logo asset",
+        "The CETA Galaxy logo displayed in the HeroSection matches the Version 16 logo asset",
+        "The CETA Galaxy logo displayed in the Footer matches the Version 16 logo asset",
+        "The HOPE logo remains unchanged from Version 9"
       ]
     }
   ],
   "constraints": [
-    "All other content, layout, styling, and functionality must remain exactly as in Version 5.",
-    "Do not modify the backend in any way.",
-    "Do not alter any immutable frontend paths."
+    "Do not change any backend logic or data models",
+    "Do not modify the HOPE logo — only the CETA Galaxy logo should be swapped",
+    "All other Version 9 content, layout, and functionality must remain exactly as-is"
   ],
   "nonGoals": [
-    "Resizing or repositioning logos beyond matching the existing Version 5 layout.",
-    "Any other visual or functional changes to the site.",
-    "Backend changes of any kind."
+    "Introducing any new features or sections beyond what existed in Version 9",
+    "Changing the HOPE logo or any other brand assets",
+    "Modifying backend subscription or profile management logic"
   ],
   "imageRequirements": {
     "required": [],
