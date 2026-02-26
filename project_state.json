@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Website project based on Version 5, with CETA Galaxy Charitable Trust and HOPE logos replaced with newly provided logos in the same positions (navbar, hero, footer).",
+  "architectural_notes": [
+    "Base version is Version 5; logo replacements (CETA & HOPE) are the only changes from that base."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-save-the-uploaded-hope-logo-hope-logo-0-photoroom-1-png-circular-design-with-two-cupped-hands-and-helping-outstanding-pupils-in-education-text-as-a-static-asset-at-frontend-public-assets-generated-hope-logo-png-and-replace-every-existing-hope-logo-image-reference-in-navigation-tsx-herosection-tsx-and-footer-tsx-with-this-new-file-preserving-the-original-size-and-position-in-each-location",
+      "title": "Save the uploaded HOPE logo (HOPE Logo_0-Photoroom-1.png — circular design with two cupped hands and 'Helping Outstanding Pupils in Education' text) as a static asset at frontend/public/assets/generated/hope-logo.png and replace every existing HOPE logo image reference in Navigation.tsx, HeroSection.tsx, and Footer.tsx with this new file, preserving the original size and position in each location.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-save-the-uploaded-ceta-galaxy-charitable-trust-logo-ceta-logo-photoroom-1-png-circular-design-with-globe-ribbon-and-ceta-galaxy-charitable-trust-text-as-a-static-asset-at-frontend-public-assets-generated-ceta-logo-png-and-replace-every-existing-ceta-logo-image-reference-in-navigation-tsx-herosection-tsx-and-footer-tsx-with-this-new-file-preserving-the-original-size-and-position-in-each-location",
+      "title": "Save the uploaded CETA Galaxy Charitable Trust logo (CETA Logo-Photoroom-1.png — circular design with globe, ribbon, and 'CETA Galaxy Charitable Trust' text) as a static asset at frontend/public/assets/generated/ceta-logo.png and replace every existing CETA logo image reference in Navigation.tsx, HeroSection.tsx, and Footer.tsx with this new file, preserving the original size and position in each location.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [],
+  "gameProjectType": "none",
+  "projectName": "CGCT HOPE Vision 2036",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

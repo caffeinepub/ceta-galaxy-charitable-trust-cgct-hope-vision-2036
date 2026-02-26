@@ -1,0 +1,69 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Replace CETA & HOPE logos with newly uploaded versions",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Replace all HOPE logo references with the new uploaded logo file (two cupped hands design with 'Helping Outstanding Pupils in Education' text)",
+      "acceptanceCriteria": [
+        "The new HOPE logo (two hands / 'Helping Outstanding Pupils in Education') is displayed in the navbar, hero section, and footer.",
+        "No old HOPE logo image remains visible anywhere on the page.",
+        "Logo size and alignment are unchanged from Version 5."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/hope-logo.png",
+          "operation": "create",
+          "description": "Save the uploaded HOPE Logo_0-Photoroom-1.png (circular design with two cupped hands and 'Helping Outstanding Pupils in Education' text) as a static asset at this exact path to replace the existing generated hope-logo file."
+        },
+        {
+          "path": "frontend/src/components/Navigation.tsx",
+          "operation": "modify",
+          "description": "Update the HOPE logo image src attribute from the current path to reference '/assets/generated/hope-logo.png', preserving the existing className, alt text, width, height, and all other attributes to maintain the original size and position."
+        },
+        {
+          "path": "frontend/src/components/HeroSection.tsx",
+          "operation": "modify",
+          "description": "Update the HOPE logo image src attribute from the current path to reference '/assets/generated/hope-logo.png', preserving the existing className, alt text, dimensions, and all other styling to maintain the original size and position in the hero section."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Update the HOPE logo image src attribute from the current path to reference '/assets/generated/hope-logo.png', preserving the existing className, alt text, dimensions, and all other styling to maintain the original size and position in the footer."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Replace all CETA logo references with the new uploaded logo file (globe and ribbon design with 'CETA Galaxy Charitable Trust' text)",
+      "acceptanceCriteria": [
+        "The new CETA Galaxy Charitable Trust logo (globe/ribbon design) is displayed in the navbar, hero section, and footer.",
+        "No old CETA logo image remains visible anywhere on the page.",
+        "Logo size and alignment are unchanged from Version 5."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/ceta-logo.png",
+          "operation": "create",
+          "description": "Save the uploaded CETA Logo-Photoroom-1.png (circular design with globe, ribbon, and 'CETA Galaxy Charitable Trust' text) as a static asset at this exact path to replace the existing generated ceta-logo file."
+        },
+        {
+          "path": "frontend/src/components/Navigation.tsx",
+          "operation": "modify",
+          "description": "Update the CETA logo image src attribute from the current path to reference '/assets/generated/ceta-logo.png', preserving the existing className, alt text, width, height, and all other attributes to maintain the original size and position."
+        },
+        {
+          "path": "frontend/src/components/HeroSection.tsx",
+          "operation": "modify",
+          "description": "Update the CETA logo image src attribute from the current path to reference '/assets/generated/ceta-logo.png', preserving the existing className, alt text, dimensions, and all other styling to maintain the original size and position in the hero section."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Update the CETA logo image src attribute from the current path to reference '/assets/generated/ceta-logo.png', preserving the existing className, alt text, dimensions, and all other styling to maintain the original size and position in the footer."
+        }
+      ]
+    }
+  ]
+}

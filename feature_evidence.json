@@ -1,0 +1,47 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-save-the-uploaded-hope-logo-hope-logo-0-photoroom-1-png-circular-design-with-two-cupped-hands-and-helping-outstanding-pupils-in-education-text-as-a-static-asset-at-frontend-public-assets-generated-hope-logo-png-and-replace-every-existing-hope-logo-image-reference-in-navigation-tsx-herosection-tsx-and-footer-tsx-with-this-new-file-preserving-the-original-size-and-position-in-each-location",
+      "featureTitle": "Save the uploaded HOPE logo (HOPE Logo_0-Photoroom-1.png — circular design with two cupped hands and 'Helping Outstanding Pupils in Education' text) as a static asset at frontend/public/assets/generated/hope-logo.png and replace every existing HOPE logo image reference in Navigation.tsx, HeroSection.tsx, and Footer.tsx with this new file, preserving the original size and position in each location.",
+      "files": [
+        "frontend/src/components/Footer.tsx",
+        "frontend/src/components/HeroSection.tsx",
+        "frontend/src/components/Navigation.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-save-the-uploaded-ceta-galaxy-charitable-trust-logo-ceta-logo-photoroom-1-png-circular-design-with-globe-ribbon-and-ceta-galaxy-charitable-trust-text-as-a-static-asset-at-frontend-public-assets-generated-ceta-logo-png-and-replace-every-existing-ceta-logo-image-reference-in-navigation-tsx-herosection-tsx-and-footer-tsx-with-this-new-file-preserving-the-original-size-and-position-in-each-location",
+      "featureTitle": "Save the uploaded CETA Galaxy Charitable Trust logo (CETA Logo-Photoroom-1.png — circular design with globe, ribbon, and 'CETA Galaxy Charitable Trust' text) as a static asset at frontend/public/assets/generated/ceta-logo.png and replace every existing CETA logo image reference in Navigation.tsx, HeroSection.tsx, and Footer.tsx with this new file, preserving the original size and position in each location.",
+      "files": [
+        "frontend/src/components/Footer.tsx",
+        "frontend/src/components/HeroSection.tsx",
+        "frontend/src/components/Navigation.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

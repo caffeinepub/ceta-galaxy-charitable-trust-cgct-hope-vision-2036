@@ -1,0 +1,58 @@
+{
+  "kind": "build_request",
+  "title": "Replace CETA & HOPE logos with newly uploaded versions",
+  "projectName": "CGCT HOPE Vision 2036",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Save the uploaded HOPE logo (HOPE Logo_0-Photoroom-1.png — circular design with two cupped hands and 'Helping Outstanding Pupils in Education' text) as a static asset at frontend/public/assets/generated/hope-logo.png and replace every existing HOPE logo image reference in Navigation.tsx, HeroSection.tsx, and Footer.tsx with this new file, preserving the original size and position in each location.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ],
+        "quotes": [
+          "simply replace the existing ones in the same spots"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The new HOPE logo (two hands / 'Helping Outstanding Pupils in Education') is displayed in the navbar, hero section, and footer.",
+        "No old HOPE logo image remains visible anywhere on the page.",
+        "Logo size and alignment are unchanged from Version 5."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Save the uploaded CETA Galaxy Charitable Trust logo (CETA Logo-Photoroom-1.png — circular design with globe, ribbon, and 'CETA Galaxy Charitable Trust' text) as a static asset at frontend/public/assets/generated/ceta-logo.png and replace every existing CETA logo image reference in Navigation.tsx, HeroSection.tsx, and Footer.tsx with this new file, preserving the original size and position in each location.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ],
+        "quotes": [
+          "simply replace the existing ones in the same spots"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The new CETA Galaxy Charitable Trust logo (globe/ribbon design) is displayed in the navbar, hero section, and footer.",
+        "No old CETA logo image remains visible anywhere on the page.",
+        "Logo size and alignment are unchanged from Version 5."
+      ]
+    }
+  ],
+  "constraints": [
+    "All other content, layout, styling, and functionality must remain exactly as in Version 5.",
+    "Do not modify the backend in any way.",
+    "Do not alter any immutable frontend paths."
+  ],
+  "nonGoals": [
+    "Resizing or repositioning logos beyond matching the existing Version 5 layout.",
+    "Any other visual or functional changes to the site.",
+    "Backend changes of any kind."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
