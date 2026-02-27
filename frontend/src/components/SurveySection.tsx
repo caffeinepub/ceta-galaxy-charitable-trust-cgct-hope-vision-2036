@@ -1,74 +1,85 @@
 import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
-import { Shield, ExternalLink } from 'lucide-react';
+import { Lock, ExternalLink } from 'lucide-react';
 
-export default function SurveySection() {
+const SurveySection: React.FC = () => {
   const { t } = useLanguage();
-  const [ref, isVisible] = useIntersectionObserver(0.1);
-
-  const englishSurveyUrl = 'https://forms.office.com/r/english-survey';
-  const malayalamSurveyUrl = 'https://forms.office.com/r/malayalam-survey';
+  const { ref, isVisible } = useIntersectionObserver(0.1);
 
   return (
-    <section id="survey" className="py-20 bg-white">
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          ref={ref}
-          className={`transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          {/* Title */}
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-maroon-800 mb-3">
-              {t('survey.title')}
-            </h2>
-            <p className="text-lg text-gray-600">{t('survey.subtitle')}</p>
-            <div className="mt-4 w-16 h-1 bg-gold-500 mx-auto rounded-full" />
-          </div>
+    <section id="survey" className="relative py-20 lg:py-28 overflow-hidden" style={{ backgroundColor: 'white' }}>
+      {/* Top accent */}
+      <div className="absolute top-0 left-0 right-0 h-1" style={{ background: 'linear-gradient(90deg, var(--maroon), var(--gold))' }} />
 
-          {/* Confidentiality Badge */}
-          <div className="flex items-center justify-center gap-2 mb-8 bg-sage-50 border border-sage-200 rounded-full px-5 py-2 w-fit mx-auto">
-            <Shield className="text-sage-600" size={16} />
-            <span className="text-sm text-sage-700 font-medium">{t('survey.confidential')}</span>
+      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="inline-block px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-4" style={{ backgroundColor: 'rgba(107,26,26,0.1)', color: 'var(--maroon)' }}>
+            Shape the Future
           </div>
-
-          {/* Survey Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-            <a
-              href={englishSurveyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 px-8 py-3 bg-maroon-700 hover:bg-maroon-800 text-white font-bold rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
-            >
-              {t('survey.english')}
-              <ExternalLink size={16} />
-            </a>
-            <a
-              href={malayalamSurveyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 px-8 py-3 bg-gold-500 hover:bg-gold-400 text-maroon-900 font-bold rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
-            >
-              {t('survey.malayalam')}
-              <ExternalLink size={16} />
-            </a>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4" style={{ color: 'var(--maroon)', fontFamily: 'Merriweather, serif' }}>
+            {t('survey.title')}
+          </h2>
+          <div className="section-divider w-24 mx-auto mb-6" />
+          <h3 className="text-2xl sm:text-3xl font-bold mb-4" style={{ color: 'var(--gold)', fontFamily: 'Merriweather, serif' }}>
+            {t('survey.headline')}
+          </h3>
+          <p className="text-base text-gray-600 max-w-2xl mx-auto leading-relaxed mb-4">
+            {t('survey.subheading')}
+          </p>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold" style={{ backgroundColor: 'rgba(143,175,126,0.15)', color: 'var(--sage-dark)' }}>
+            <Lock size={14} />
+            {t('survey.confidential')}
           </div>
+        </div>
 
-          {/* Vision 2036 Poster Card */}
-          <div className="bg-maroon-700 rounded-2xl p-6 text-white text-center shadow-xl">
-            <div className="text-4xl mb-3">📋</div>
-            <h3 className="text-xl font-bold mb-2">CGCT HOPE Vision 2036</h3>
-            <p className="text-white/80 text-sm leading-relaxed">
-              Your voice matters. Help us shape a transformative educational vision for the next generation of CGCT students.
-            </p>
-            <div className="mt-4 inline-block bg-gold-500 text-maroon-900 text-xs font-bold px-4 py-1.5 rounded-full">
-              Survey Open Until April 2026
+        {/* Survey Content */}
+        <div className={`max-w-2xl mx-auto transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="space-y-6">
+            <div className="rounded-2xl p-6 lg:p-8 shadow-card" style={{ backgroundColor: 'var(--cream)', border: '1px solid rgba(107,26,26,0.08)' }}>
+              <p className="text-base text-gray-700 leading-relaxed mb-8">
+                {t('survey.participate')}
+              </p>
+
+              <div className="space-y-4">
+                <a
+                  href="https://forms.office.com/r/8vunq1kxtg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-maroon w-full inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full text-base font-bold"
+                >
+                  <ExternalLink size={18} />
+                  {t('survey.btn.english')}
+                </a>
+                <a
+                  href="https://forms.office.com/r/A8kNvXS0Lw"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline-gold w-full inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full text-base font-bold"
+                  style={{ borderColor: 'var(--gold)', color: 'var(--maroon)' }}
+                >
+                  <ExternalLink size={18} />
+                  {t('survey.btn.malayalam')}
+                </a>
+              </div>
+            </div>
+
+            {/* Survey poster visual */}
+            <div className="rounded-2xl p-6 text-center" style={{ background: 'linear-gradient(135deg, var(--maroon-dark), var(--maroon))', color: 'white' }}>
+              <div className="text-4xl mb-3">📊</div>
+              <h4 className="text-lg font-black mb-2" style={{ fontFamily: 'Merriweather, serif', color: 'var(--gold)' }}>
+                CGCT HOPE Vision 2036
+              </h4>
+              <p className="text-sm text-white/80">
+                Your voice matters. Help us build a better future for HOPE students.
+              </p>
             </div>
           </div>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default SurveySection;

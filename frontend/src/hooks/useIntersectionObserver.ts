@@ -1,15 +1,10 @@
-import { useState, useEffect, useRef, RefObject } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-export function useIntersectionObserver(
-  threshold: number = 0.1
-): [RefObject<HTMLDivElement | null>, boolean] {
-  const ref = useRef<HTMLDivElement>(null);
+export function useIntersectionObserver(threshold: number = 0.15) {
   const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -20,9 +15,13 @@ export function useIntersectionObserver(
       { threshold }
     );
 
-    observer.observe(element);
-    return () => observer.disconnect();
+    const el = ref.current;
+    if (el) observer.observe(el);
+
+    return () => {
+      if (el) observer.unobserve(el);
+    };
   }, [threshold]);
 
-  return [ref, isVisible];
+  return { ref, isVisible };
 }

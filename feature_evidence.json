@@ -2,43 +2,8 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-restore-the-full-frontend-application-to-the-version-9-state-preserving-all-its-layouts-sections-content-styling-and-functionality-exactly-as-they-were-in-that-version",
-      "featureTitle": "Restore the full frontend application to the Version 9 state, preserving all its layouts, sections, content, styling, and functionality exactly as they were in that version.",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/AboutSection.tsx",
-        "frontend/src/components/DigitalImpactSection.tsx",
-        "frontend/src/components/Footer.tsx",
-        "frontend/src/components/HeroSection.tsx",
-        "frontend/src/components/LeafMotif.tsx",
-        "frontend/src/components/Navigation.tsx",
-        "frontend/src/components/ReunionSection.tsx",
-        "frontend/src/components/StakeholderVoicesSection.tsx",
-        "frontend/src/components/SurveySection.tsx",
-        "frontend/src/components/VisionPillarsSection.tsx",
-        "frontend/src/contexts/LanguageContext.tsx",
-        "frontend/src/hooks/useCountUp.ts",
-        "frontend/src/hooks/useCountdown.ts",
-        "frontend/src/hooks/useIntersectionObserver.ts",
-        "frontend/src/index.css",
-        "frontend/tailwind.config.js"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-1"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-replace-the-ceta-galaxy-logo-used-in-version-9-with-the-ceta-galaxy-logo-asset-from-version-16-update-all-references-to-the-ceta-galaxy-logo-in-navigation-tsx-herosection-tsx-and-footer-tsx-to-use-the-version-16-logo-file",
-      "featureTitle": "Replace the CETA Galaxy logo used in Version 9 with the CETA Galaxy logo asset from Version 16. Update all references to the CETA Galaxy logo in Navigation.tsx, HeroSection.tsx, and Footer.tsx to use the Version 16 logo file.",
+      "featureId": "feature-save-the-uploaded-ceta-2-png-as-a-static-asset-at-frontend-public-assets-generated-ceta-2-png-and-replace-all-broken-ceta-galaxy-logo-image-references-in-navigation-tsx-herosection-tsx-and-footer-tsx-with-this-new-file-path-preserving-all-existing-sizing-positioning-and-styling-of-those-logo-elements-exactly-as-they-appear-in-version-9",
+      "featureTitle": "Save the uploaded CETA-2.png as a static asset at frontend/public/assets/generated/CETA-2.png and replace all broken CETA Galaxy logo image references in Navigation.tsx, HeroSection.tsx, and Footer.tsx with this new file path, preserving all existing sizing, positioning, and styling of those logo elements exactly as they appear in Version 9.",
       "files": [
         "frontend/src/components/Footer.tsx",
         "frontend/src/components/HeroSection.tsx",
@@ -53,7 +18,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-2"
+        "REQ-1"
       ],
       "confidence": "high"
     }

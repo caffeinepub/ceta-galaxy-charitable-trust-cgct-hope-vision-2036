@@ -1,124 +1,170 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 
-export default function Navigation() {
-  const { t, language, toggleLanguage } = useLanguage();
+const Navigation: React.FC = () => {
+  const { t, toggleLanguage, language } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-    setMobileOpen(false);
-  };
-
   const navLinks = [
-    { label: t('nav.about'), id: 'about' },
-    { label: t('nav.vision'), id: 'vision' },
-    { label: t('nav.reunion'), id: 'reunion' },
-    { label: t('nav.survey'), id: 'survey' },
-    { label: t('nav.contact'), id: 'contact' },
+    { key: 'nav.home', href: '#home' },
+    { key: 'nav.about', href: '#about' },
+    { key: 'nav.vision', href: '#vision' },
+    { key: 'nav.reunion', href: '#reunion' },
+    { key: 'nav.survey', href: '#survey' },
+    { key: 'nav.contact', href: '#contact' },
   ];
+
+  const handleNavClick = (href: string) => {
+    setMobileOpen(false);
+    const el = document.querySelector(href);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+        isScrolled
+          ? 'bg-white shadow-lg border-b-2 border-gold'
+          : 'bg-white/95 backdrop-blur-sm shadow-sm'
       }`}
+      style={{ borderBottomColor: isScrolled ? 'var(--gold)' : 'transparent' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* CETA Galaxy Logo - Version 16 asset */}
-          <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between h-16 lg:h-20">
+          {/* Left Logo - CETA Galaxy */}
+          <div className="flex items-center gap-2 flex-shrink-0">
             <img
-              src="/assets/generated/ceta-galaxy-logo.dim_512x512.png"
-              alt="CETA Galaxy Logo"
-              className="h-12 w-auto object-contain"
+              src="/assets/CETA-2.png"
+              alt="CETA Galaxy Charitable Trust"
+              className="h-10 w-10 lg:h-14 lg:w-14 object-contain"
             />
+            <div className="hidden sm:block">
+              <p className="text-xs font-bold leading-tight" style={{ color: 'var(--maroon)', fontFamily: 'Merriweather, serif' }}>
+                CETA Galaxy
+              </p>
+              <p className="text-xs leading-tight text-gray-600">Charitable Trust</p>
+            </div>
           </div>
 
           {/* Center Title */}
-          <div className="hidden md:block text-center">
-            <p className={`text-sm font-semibold tracking-wide ${isScrolled ? 'text-maroon-700' : 'text-white'}`}>
+          <div className="hidden lg:flex flex-col items-center text-center flex-1 px-4">
+            <span className="text-sm font-bold tracking-wide" style={{ color: 'var(--maroon)', fontFamily: 'Merriweather, serif' }}>
               {t('nav.title')}
-            </p>
+            </span>
+            <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: 'var(--gold)' }}>
+              {t('nav.subtitle')}
+            </span>
           </div>
 
-          {/* HOPE Logo */}
-          <div className="flex items-center gap-3">
-            <img
-              src="/assets/HOPE Logo_0-Photoroom-1.png"
-              alt="HOPE Logo"
-              className="h-12 w-auto object-contain"
-            />
-          </div>
-
-          {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-6">
+          {/* Desktop Nav Links */}
+          <div className="hidden lg:flex items-center gap-1">
             {navLinks.map(link => (
               <button
-                key={link.id}
-                onClick={() => scrollTo(link.id)}
-                className={`text-sm font-medium transition-colors hover:text-gold-500 ${
-                  isScrolled ? 'text-maroon-800' : 'text-white'
-                }`}
+                key={link.key}
+                onClick={() => handleNavClick(link.href)}
+                className="px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 hover:text-white"
+                style={{ color: 'var(--maroon)' }}
+                onMouseEnter={e => {
+                  (e.target as HTMLElement).style.backgroundColor = 'var(--maroon)';
+                  (e.target as HTMLElement).style.color = 'white';
+                }}
+                onMouseLeave={e => {
+                  (e.target as HTMLElement).style.backgroundColor = 'transparent';
+                  (e.target as HTMLElement).style.color = 'var(--maroon)';
+                }}
               >
-                {link.label}
+                {t(link.key)}
               </button>
             ))}
-            <button
-              onClick={toggleLanguage}
-              className={`px-3 py-1 rounded-full text-xs font-semibold border transition-colors ${
-                isScrolled
-                  ? 'border-maroon-700 text-maroon-700 hover:bg-maroon-700 hover:text-white'
-                  : 'border-white text-white hover:bg-white hover:text-maroon-700'
-              }`}
-            >
-              {language === 'en' ? 'മലയാളം' : 'English'}
-            </button>
           </div>
 
-          {/* Mobile hamburger */}
-          <button
-            className="lg:hidden p-2"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen
-              ? <X className={isScrolled ? 'text-maroon-800' : 'text-white'} size={24} />
-              : <Menu className={isScrolled ? 'text-maroon-800' : 'text-white'} size={24} />
-            }
-          </button>
+          {/* Right: Language Toggle + HOPE Logo + Mobile Menu */}
+          <div className="flex items-center gap-2 flex-shrink-0">
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold border-2 transition-all duration-200"
+              style={{
+                borderColor: 'var(--gold)',
+                color: 'var(--maroon)',
+                backgroundColor: 'transparent',
+              }}
+              onMouseEnter={e => {
+                (e.target as HTMLElement).style.backgroundColor = 'var(--gold)';
+              }}
+              onMouseLeave={e => {
+                (e.target as HTMLElement).style.backgroundColor = 'transparent';
+              }}
+              aria-label="Toggle language"
+            >
+              <Globe size={12} />
+              <span>{t('nav.lang')}</span>
+            </button>
+
+            {/* HOPE Logo */}
+            <img
+              src="/assets/HOPE Logo_0-Photoroom-1.png"
+              alt="HOPE - Helping Outstanding Pupils in Education"
+              className="h-10 w-10 lg:h-14 lg:w-14 object-contain"
+            />
+
+            {/* Mobile Hamburger */}
+            <button
+              className="lg:hidden p-2 rounded-md"
+              style={{ color: 'var(--maroon)' }}
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
         {mobileOpen && (
-          <div className="lg:hidden mt-4 pb-4 bg-white rounded-xl shadow-lg p-4">
-            {navLinks.map(link => (
-              <button
-                key={link.id}
-                onClick={() => scrollTo(link.id)}
-                className="block w-full text-left py-2 px-3 text-maroon-800 hover:bg-maroon-50 rounded-lg text-sm font-medium"
-              >
-                {link.label}
-              </button>
-            ))}
-            <button
-              onClick={toggleLanguage}
-              className="mt-2 w-full py-2 px-3 rounded-lg border border-maroon-700 text-maroon-700 text-sm font-semibold"
-            >
-              {language === 'en' ? 'മലയാളം' : 'English'}
-            </button>
+          <div className="lg:hidden mobile-menu-enter border-t" style={{ borderColor: 'var(--gold)' }}>
+            <div className="py-3 space-y-1">
+              {/* Mobile Title */}
+              <div className="px-4 py-2 text-center">
+                <p className="text-sm font-bold" style={{ color: 'var(--maroon)', fontFamily: 'Merriweather, serif' }}>
+                  {t('nav.title')}
+                </p>
+                <p className="text-xs font-semibold" style={{ color: 'var(--gold)' }}>
+                  {t('nav.subtitle')}
+                </p>
+              </div>
+              {navLinks.map(link => (
+                <button
+                  key={link.key}
+                  onClick={() => handleNavClick(link.href)}
+                  className="block w-full text-left px-4 py-3 text-sm font-medium transition-colors"
+                  style={{ color: 'var(--maroon)' }}
+                  onMouseEnter={e => {
+                    (e.target as HTMLElement).style.backgroundColor = 'var(--off-white)';
+                  }}
+                  onMouseLeave={e => {
+                    (e.target as HTMLElement).style.backgroundColor = 'transparent';
+                  }}
+                >
+                  {t(link.key)}
+                </button>
+              ))}
+            </div>
           </div>
         )}
       </div>
     </nav>
   );
-}
+};
+
+export default Navigation;

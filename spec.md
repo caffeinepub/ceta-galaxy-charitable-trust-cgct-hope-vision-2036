@@ -1,11 +1,13 @@
 # Specification
 
 ## Summary
-**Goal:** Restore the application to its Version 9 state while replacing the CETA Galaxy logo with the one from Version 16.
+**Goal:** Replace the broken CETA Galaxy logo images in the navbar, hero section, and footer with the newly uploaded CETA-2.png file.
 
 **Planned changes:**
-- Restore all frontend sections, layouts, content, styling, and functionality to exactly match Version 9 (Navigation, Hero, About, VisionPillars, Reunion, Survey, StakeholderVoices, DigitalImpact, Footer)
-- Replace the CETA Galaxy logo in Navigation.tsx, HeroSection.tsx, and Footer.tsx with the Version 16 logo asset (`ceta-galaxy-logo-light.dim_512x512.png`)
-- Keep the HOPE logo unchanged from Version 9
+- Save CETA-2.png as a static asset at `frontend/public/assets/generated/CETA-2.png`
+- Update the CETA Galaxy logo image `src` path in `Navigation.tsx` to point to the new file
+- Update the CETA Galaxy logo image `src` path in `HeroSection.tsx` to point to the new file
+- Update the CETA Galaxy logo image `src` path in `Footer.tsx` to point to the new file
+- Preserve all existing sizing, positioning, and styling of those logo elements exactly
 
-**User-visible outcome:** The app looks and functions exactly like Version 9, but displays the Version 16 CETA Galaxy logo throughout the navigation, hero section, and footer.
+**User-visible outcome:** The CETA Galaxy logo displays correctly (no broken image icon) in the navbar, hero section, and footer.

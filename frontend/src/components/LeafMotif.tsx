@@ -1,41 +1,48 @@
 import React from 'react';
 
 interface LeafMotifProps {
+  className?: string;
   count?: number;
   opacity?: number;
   color?: string;
 }
 
-const positions = [
-  { top: '10%', left: '5%', rotate: 15, size: 80 },
-  { top: '60%', left: '2%', rotate: -20, size: 60 },
-  { top: '20%', right: '4%', rotate: 45, size: 70 },
-  { top: '75%', right: '6%', rotate: -10, size: 90 },
-  { top: '45%', left: '50%', rotate: 30, size: 50 },
-];
+const LeafMotif: React.FC<LeafMotifProps> = ({
+  className = '',
+  count = 4,
+  opacity = 0.08,
+  color = '#8FAF7E',
+}) => {
+  const positions = [
+    { top: '-5%', right: '-3%', size: 280, rotate: 0 },
+    { top: '30%', left: '-4%', size: 200, rotate: 45 },
+    { bottom: '-5%', right: '10%', size: 240, rotate: 90 },
+    { top: '10%', right: '20%', size: 160, rotate: 135 },
+    { bottom: '20%', left: '5%', size: 180, rotate: 60 },
+  ];
 
-export default function LeafMotif({ count = 3, opacity = 0.08, color = '#8B1A1A' }: LeafMotifProps) {
   return (
-    <>
-      {positions.slice(0, Math.min(count, 5)).map((pos, i) => (
+    <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`} aria-hidden="true">
+      {positions.slice(0, count).map((pos, i) => (
         <div
           key={i}
-          className="absolute pointer-events-none"
           style={{
+            position: 'absolute',
             top: pos.top,
-            left: 'left' in pos ? pos.left : undefined,
-            right: 'right' in pos ? (pos as any).right : undefined,
-            transform: `rotate(${pos.rotate}deg)`,
+            left: pos.left,
+            right: pos.right,
+            bottom: pos.bottom,
             width: pos.size,
             height: pos.size,
+            borderRadius: '50% 0 50% 0',
+            backgroundColor: color,
             opacity,
+            transform: `rotate(${pos.rotate}deg)`,
           }}
-        >
-          <svg viewBox="0 0 100 100" fill={color} xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 5 L95 50 L50 95 L5 50 Z" />
-          </svg>
-        </div>
+        />
       ))}
-    </>
+    </div>
   );
-}
+};
+
+export default LeafMotif;

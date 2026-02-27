@@ -1,30 +1,26 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "New project",
-  "architectural_notes": [],
+  "summary": "Website project for CETA (College of Engineering Trivandrum Alumni) Galaxy Charitable Trust featuring a navbar, hero section, and footer with the CETA logo.",
+  "architectural_notes": [
+    "Logo asset is CETA-2.png (circular emblem, dark red/maroon, globe and banner design)",
+    "Logo appears in three locations: navbar, hero section, and footer"
+  ],
   "known_issues": [],
-  "isFixRequest": false,
+  "isFixRequest": true,
   "existing_features": [
     {
-      "id": "feature-restore-the-full-frontend-application-to-the-version-9-state-preserving-all-its-layouts-sections-content-styling-and-functionality-exactly-as-they-were-in-that-version",
-      "title": "Restore the full frontend application to the Version 9 state, preserving all its layouts, sections, content, styling, and functionality exactly as they were in that version.",
+      "id": "feature-save-the-uploaded-ceta-2-png-as-a-static-asset-at-frontend-public-assets-generated-ceta-2-png-and-replace-all-broken-ceta-galaxy-logo-image-references-in-navigation-tsx-herosection-tsx-and-footer-tsx-with-this-new-file-path-preserving-all-existing-sizing-positioning-and-styling-of-those-logo-elements-exactly-as-they-appear-in-version-9",
+      "title": "Save the uploaded CETA-2.png as a static asset at frontend/public/assets/generated/CETA-2.png and replace all broken CETA Galaxy logo image references in Navigation.tsx, HeroSection.tsx, and Footer.tsx with this new file path, preserving all existing sizing, positioning, and styling of those logo elements exactly as they appear in Version 9.",
       "reqIds": [
         "REQ-1"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-replace-the-ceta-galaxy-logo-used-in-version-9-with-the-ceta-galaxy-logo-asset-from-version-16-update-all-references-to-the-ceta-galaxy-logo-in-navigation-tsx-herosection-tsx-and-footer-tsx-to-use-the-version-16-logo-file",
-      "title": "Replace the CETA Galaxy logo used in Version 9 with the CETA Galaxy logo asset from Version 16. Update all references to the CETA Galaxy logo in Navigation.tsx, HeroSection.tsx, and Footer.tsx to use the Version 16 logo file.",
-      "reqIds": [
-        "REQ-2"
       ],
       "version": 1
     }
   ],
   "new_feature_requests": [],
-  "projectName": "CETA",
+  "gameProjectType": "none",
+  "projectName": "CETA Galaxy Charitable Trust Website",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

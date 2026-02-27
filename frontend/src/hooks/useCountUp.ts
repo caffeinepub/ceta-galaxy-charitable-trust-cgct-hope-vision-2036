@@ -1,35 +1,42 @@
 import { useState, useEffect, useRef } from 'react';
 
-export function useCountUp(target: number, duration: number = 2000, start: boolean = true): number {
+export function useCountUp(target: number, duration: number = 2000, trigger: boolean = true): number {
   const [count, setCount] = useState(0);
-  const frameRef = useRef<number | null>(null);
   const startTimeRef = useRef<number | null>(null);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
-    if (!start) return;
+    if (!trigger) return;
+
+    startTimeRef.current = null;
 
     const animate = (timestamp: number) => {
-      if (!startTimeRef.current) startTimeRef.current = timestamp;
+      if (startTimeRef.current === null) {
+        startTimeRef.current = timestamp;
+      }
+
       const elapsed = timestamp - startTimeRef.current;
       const progress = Math.min(elapsed / duration, 1);
-      // Ease-out cubic
+
+      // Ease out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.floor(eased * target));
 
       if (progress < 1) {
-        frameRef.current = requestAnimationFrame(animate);
+        rafRef.current = requestAnimationFrame(animate);
       } else {
         setCount(target);
       }
     };
 
-    frameRef.current = requestAnimationFrame(animate);
+    rafRef.current = requestAnimationFrame(animate);
 
     return () => {
-      if (frameRef.current) cancelAnimationFrame(frameRef.current);
-      startTimeRef.current = null;
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current);
+      }
     };
-  }, [target, duration, start]);
+  }, [target, duration, trigger]);
 
   return count;
 }
