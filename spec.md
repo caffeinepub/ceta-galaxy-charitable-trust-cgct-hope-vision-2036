@@ -1,13 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Replace the broken CETA Galaxy logo images in the navbar, hero section, and footer with the newly uploaded CETA-2.png file.
+**Goal:** Replace the CETA and HOPE logo images in the navbar, hero section, and footer with newly uploaded versions, keeping all other content identical to Version 5.
 
 **Planned changes:**
-- Save CETA-2.png as a static asset at `frontend/public/assets/generated/CETA-2.png`
-- Update the CETA Galaxy logo image `src` path in `Navigation.tsx` to point to the new file
-- Update the CETA Galaxy logo image `src` path in `HeroSection.tsx` to point to the new file
-- Update the CETA Galaxy logo image `src` path in `Footer.tsx` to point to the new file
-- Preserve all existing sizing, positioning, and styling of those logo elements exactly
+- Save `CETA-3.png` (CETA Galaxy Charitable Trust circular seal in dark red) as a static asset under `frontend/public/assets/generated/`
+- Save `HOPE Logo_0-Photoroom-2.png` (HOPE – Helping Outstanding Pupils in Education circular logo with cupped hands) as a static asset under `frontend/public/assets/generated/`
+- Update `Navigation.tsx`, `HeroSection.tsx`, and `Footer.tsx` to reference the new CETA logo image, preserving existing size, position, and alt text
+- Update `Navigation.tsx`, `HeroSection.tsx`, and `Footer.tsx` to reference the new HOPE logo image, preserving existing size, position, and alt text
 
-**User-visible outcome:** The CETA Galaxy logo displays correctly (no broken image icon) in the navbar, hero section, and footer.
+**User-visible outcome:** The navbar, hero section, and footer now display the updated CETA Galaxy Charitable Trust and HOPE logos; everything else remains unchanged from Version 5.

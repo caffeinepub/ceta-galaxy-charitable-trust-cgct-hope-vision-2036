@@ -80,13 +80,13 @@ const HeroSection: React.FC = () => {
         {/* Logos row */}
         <div className="flex justify-center items-center gap-6 mb-8">
           <img
-            src="/assets/CETA-2.png"
+            src="/assets/generated/CETA-3.png"
             alt="CETA Galaxy"
             className="h-16 w-16 lg:h-20 lg:w-20 object-contain opacity-90"
           />
           <div className="h-12 w-px opacity-30" style={{ backgroundColor: 'var(--gold)' }} />
           <img
-            src="/assets/HOPE Logo_0-Photoroom-1.png"
+            src="/assets/generated/HOPE_Logo_0-Photoroom-2.png"
             alt="HOPE"
             className="h-16 w-16 lg:h-20 lg:w-20 object-contain opacity-90"
           />

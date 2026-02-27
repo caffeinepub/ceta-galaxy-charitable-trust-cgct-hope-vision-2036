@@ -44,7 +44,7 @@ const Navigation: React.FC = () => {
           {/* Left Logo - CETA Galaxy */}
           <div className="flex items-center gap-2 flex-shrink-0">
             <img
-              src="/assets/CETA-2.png"
+              src="/assets/generated/CETA-3.png"
               alt="CETA Galaxy Charitable Trust"
               className="h-10 w-10 lg:h-14 lg:w-14 object-contain"
             />
@@ -113,7 +113,7 @@ const Navigation: React.FC = () => {
 
             {/* HOPE Logo */}
             <img
-              src="/assets/HOPE Logo_0-Photoroom-1.png"
+              src="/assets/generated/HOPE_Logo_0-Photoroom-2.png"
               alt="HOPE - Helping Outstanding Pupils in Education"
               className="h-10 w-10 lg:h-14 lg:w-14 object-contain"
             />

@@ -1,38 +1,75 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Replace broken CETA logo with CETA-2.png in navbar, hero, and footer",
+  "title": "Draft Version 23: Swap CETA and HOPE logos in navbar, hero, and footer",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Replace all broken CETA Galaxy logo image references in Navigation.tsx, HeroSection.tsx, and Footer.tsx with the uploaded CETA-2.png file, preserving all existing sizing, positioning, and styling",
+      "summary": "Replace existing CETA logo with CETA-3.png in navbar, hero section, and footer",
       "acceptanceCriteria": [
-        "CETA-2.png is saved to frontend/public/assets/generated/CETA-2.png",
-        "The CETA Galaxy logo renders correctly (no broken image icon) in the Navigation/navbar",
-        "The CETA Galaxy logo renders correctly in the HeroSection",
-        "The CETA Galaxy logo renders correctly in the Footer",
-        "All other content, layout, and styling from Version 9 remains unchanged"
+        "The new CETA-3.png logo appears in the navbar where the old CETA logo was displayed",
+        "The new CETA-3.png logo appears in the hero section where the old CETA logo was displayed",
+        "The new CETA-3.png logo appears in the footer where the old CETA logo was displayed",
+        "No other visual or functional changes are made relative to Version 5"
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/generated/CETA-2.png",
-          "operation": "create",
-          "description": "Save the uploaded CETA-2.png logo file to the frontend assets directory at frontend/public/assets/generated/CETA-2.png to replace the broken CETA Galaxy logo references"
-        },
-        {
           "path": "frontend/src/components/Navigation.tsx",
           "operation": "modify",
-          "description": "Replace the broken CETA Galaxy logo image source path with /assets/generated/CETA-2.png while preserving all existing className, sizing (w-8 h-8 md:w-10 md:h-10), positioning, and styling attributes exactly as they appear in the current version"
+          "description": "Update the CETA logo image source to reference frontend/public/assets/generated/CETA-3.png, preserving the existing size, position, className, and alt text. Locate the current CETA logo img element and replace only its src attribute."
         },
         {
           "path": "frontend/src/components/HeroSection.tsx",
           "operation": "modify",
-          "description": "Replace the broken CETA Galaxy logo image source path with /assets/generated/CETA-2.png while preserving all existing className, sizing, positioning, and styling attributes exactly as they appear in the hero logo row"
+          "description": "Update the CETA logo image source to reference frontend/public/assets/generated/CETA-3.png, preserving the existing size, position, className, and alt text. Locate the current CETA logo img element within the logo row and replace only its src attribute."
         },
         {
           "path": "frontend/src/components/Footer.tsx",
           "operation": "modify",
-          "description": "Replace the broken CETA Galaxy logo image source path with /assets/generated/CETA-2.png while preserving all existing className, sizing (w-12 h-12 md:w-16 md:h-16), positioning, and styling attributes exactly as they appear in the footer dual logo section"
+          "description": "Update the CETA logo image source to reference frontend/public/assets/generated/CETA-3.png, preserving the existing size, position, className, and alt text. Locate the current CETA logo img element and replace only its src attribute."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Replace existing HOPE logo with HOPE Logo_0-Photoroom-2.png in navbar, hero section, and footer",
+      "acceptanceCriteria": [
+        "The new HOPE Logo_0-Photoroom-2.png logo appears in the navbar where the old HOPE logo was displayed",
+        "The new HOPE Logo_0-Photoroom-2.png logo appears in the hero section where the old HOPE logo was displayed",
+        "The new HOPE Logo_0-Photoroom-2.png logo appears in the footer where the old HOPE logo was displayed",
+        "No other visual or functional changes are made relative to Version 5"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Navigation.tsx",
+          "operation": "modify",
+          "description": "Update the HOPE logo image source to reference frontend/public/assets/generated/HOPE_Logo_0-Photoroom-2.png, preserving the existing size, position, className, and alt text. Locate the current HOPE logo img element and replace only its src attribute."
+        },
+        {
+          "path": "frontend/src/components/HeroSection.tsx",
+          "operation": "modify",
+          "description": "Update the HOPE logo image source to reference frontend/public/assets/generated/HOPE_Logo_0-Photoroom-2.png, preserving the existing size, position, className, and alt text. Locate the current HOPE logo img element within the logo row and replace only its src attribute."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Update the HOPE logo image source to reference frontend/public/assets/generated/HOPE_Logo_0-Photoroom-2.png, preserving the existing size, position, className, and alt text. Locate the current HOPE logo img element and replace only its src attribute."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Verify CETA-3.png and HOPE Logo_0-Photoroom-2.png are available as static assets and components reference them correctly",
+      "acceptanceCriteria": [
+        "CETA-3.png is accessible at frontend/public/assets/generated/CETA-3.png",
+        "HOPE logo is accessible at frontend/public/assets/generated/ with a clean filename",
+        "All three components reference these static paths correctly and images load without errors"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Navigation.tsx",
+          "operation": "modify",
+          "description": "Verify that both logo image paths are correctly set to frontend/public/assets/generated/CETA-3.png and frontend/public/assets/generated/HOPE_Logo_0-Photoroom-2.png after the updates in REQ-1 and REQ-2. Test that images load without 404 errors."
         }
       ]
     }

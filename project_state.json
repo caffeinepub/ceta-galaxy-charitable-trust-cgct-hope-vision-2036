@@ -1,26 +1,42 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Website project for CETA (College of Engineering Trivandrum Alumni) Galaxy Charitable Trust featuring a navbar, hero section, and footer with the CETA logo.",
+  "summary": "Website project for CETA Galaxy Charitable Trust and HOPE (Helping Outstanding Pupils in Education) organizations. Building Draft Version 23 based on Version 5 with updated logos (CETA and HOPE) swapped into their original positions in the navbar, hero, and footer.",
   "architectural_notes": [
-    "Logo asset is CETA-2.png (circular emblem, dark red/maroon, globe and banner design)",
-    "Logo appears in three locations: navbar, hero section, and footer"
+    "Project uses versioned drafts; Version 5 is the stable base, Version 23 builds on it with logo updates.",
+    "Logos appear in three locations: navbar, hero, and footer."
   ],
   "known_issues": [],
-  "isFixRequest": true,
+  "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-save-the-uploaded-ceta-2-png-as-a-static-asset-at-frontend-public-assets-generated-ceta-2-png-and-replace-all-broken-ceta-galaxy-logo-image-references-in-navigation-tsx-herosection-tsx-and-footer-tsx-with-this-new-file-path-preserving-all-existing-sizing-positioning-and-styling-of-those-logo-elements-exactly-as-they-appear-in-version-9",
-      "title": "Save the uploaded CETA-2.png as a static asset at frontend/public/assets/generated/CETA-2.png and replace all broken CETA Galaxy logo image references in Navigation.tsx, HeroSection.tsx, and Footer.tsx with this new file path, preserving all existing sizing, positioning, and styling of those logo elements exactly as they appear in Version 9.",
+      "id": "feature-replace-the-existing-ceta-logo-image-with-the-newly-uploaded-ceta-3-png-ceta-galaxy-charitable-trust-circular-seal-in-dark-red-in-the-navbar-navigation-tsx-hero-section-herosection-tsx-and-footer-footer-tsx-preserving-the-same-size-position-and-alt-text-as-the-previous-logo-in-each-location",
+      "title": "Replace the existing CETA logo image with the newly uploaded CETA-3.png (CETA Galaxy Charitable Trust circular seal in dark red) in the navbar (Navigation.tsx), hero section (HeroSection.tsx), and footer (Footer.tsx), preserving the same size, position, and alt text as the previous logo in each location.",
       "reqIds": [
         "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-existing-hope-logo-image-with-the-newly-uploaded-hope-logo-0-photoroom-2-png-hope-helping-outstanding-pupils-in-education-circular-logo-with-cupped-hands-in-the-navbar-navigation-tsx-hero-section-herosection-tsx-and-footer-footer-tsx-preserving-the-same-size-position-and-alt-text-as-the-previous-logo-in-each-location",
+      "title": "Replace the existing HOPE logo image with the newly uploaded HOPE Logo_0-Photoroom-2.png (HOPE – Helping Outstanding Pupils in Education circular logo with cupped hands) in the navbar (Navigation.tsx), hero section (HeroSection.tsx), and footer (Footer.tsx), preserving the same size, position, and alt text as the previous logo in each location.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-save-ceta-3-png-and-hope-logo-0-photoroom-2-png-as-static-assets-under-frontend-public-assets-generated-and-reference-them-from-navigation-tsx-herosection-tsx-and-footer-tsx-using-their-respective-static-asset-paths",
+      "title": "Save CETA-3.png and HOPE Logo_0-Photoroom-2.png as static assets under frontend/public/assets/generated/ and reference them from Navigation.tsx, HeroSection.tsx, and Footer.tsx using their respective static asset paths.",
+      "reqIds": [
+        "REQ-3"
       ],
       "version": 1
     }
   ],
   "new_feature_requests": [],
   "gameProjectType": "none",
-  "projectName": "CETA Galaxy Charitable Trust Website",
+  "projectName": "CETA & HOPE Website",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

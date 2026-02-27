@@ -2,8 +2,8 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-save-the-uploaded-ceta-2-png-as-a-static-asset-at-frontend-public-assets-generated-ceta-2-png-and-replace-all-broken-ceta-galaxy-logo-image-references-in-navigation-tsx-herosection-tsx-and-footer-tsx-with-this-new-file-path-preserving-all-existing-sizing-positioning-and-styling-of-those-logo-elements-exactly-as-they-appear-in-version-9",
-      "featureTitle": "Save the uploaded CETA-2.png as a static asset at frontend/public/assets/generated/CETA-2.png and replace all broken CETA Galaxy logo image references in Navigation.tsx, HeroSection.tsx, and Footer.tsx with this new file path, preserving all existing sizing, positioning, and styling of those logo elements exactly as they appear in Version 9.",
+      "featureId": "feature-replace-the-existing-ceta-logo-image-with-the-newly-uploaded-ceta-3-png-ceta-galaxy-charitable-trust-circular-seal-in-dark-red-in-the-navbar-navigation-tsx-hero-section-herosection-tsx-and-footer-footer-tsx-preserving-the-same-size-position-and-alt-text-as-the-previous-logo-in-each-location",
+      "featureTitle": "Replace the existing CETA logo image with the newly uploaded CETA-3.png (CETA Galaxy Charitable Trust circular seal in dark red) in the navbar (Navigation.tsx), hero section (HeroSection.tsx), and footer (Footer.tsx), preserving the same size, position, and alt text as the previous logo in each location.",
       "files": [
         "frontend/src/components/Footer.tsx",
         "frontend/src/components/HeroSection.tsx",
@@ -19,6 +19,46 @@
       ],
       "testIds": [
         "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-replace-the-existing-hope-logo-image-with-the-newly-uploaded-hope-logo-0-photoroom-2-png-hope-helping-outstanding-pupils-in-education-circular-logo-with-cupped-hands-in-the-navbar-navigation-tsx-hero-section-herosection-tsx-and-footer-footer-tsx-preserving-the-same-size-position-and-alt-text-as-the-previous-logo-in-each-location",
+      "featureTitle": "Replace the existing HOPE logo image with the newly uploaded HOPE Logo_0-Photoroom-2.png (HOPE – Helping Outstanding Pupils in Education circular logo with cupped hands) in the navbar (Navigation.tsx), hero section (HeroSection.tsx), and footer (Footer.tsx), preserving the same size, position, and alt text as the previous logo in each location.",
+      "files": [
+        "frontend/src/components/Footer.tsx",
+        "frontend/src/components/HeroSection.tsx",
+        "frontend/src/components/Navigation.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-save-ceta-3-png-and-hope-logo-0-photoroom-2-png-as-static-assets-under-frontend-public-assets-generated-and-reference-them-from-navigation-tsx-herosection-tsx-and-footer-tsx-using-their-respective-static-asset-paths",
+      "featureTitle": "Save CETA-3.png and HOPE Logo_0-Photoroom-2.png as static assets under frontend/public/assets/generated/ and reference them from Navigation.tsx, HeroSection.tsx, and Footer.tsx using their respective static asset paths.",
+      "files": [
+        "frontend/src/components/Navigation.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
       ],
       "confidence": "high"
     }

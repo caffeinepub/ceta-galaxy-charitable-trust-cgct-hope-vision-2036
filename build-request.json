@@ -1,42 +1,79 @@
 {
   "kind": "build_request",
-  "title": "Replace broken CETA logo with CETA-2.png in navbar, hero, and footer",
+  "title": "Draft Version 23: Swap CETA and HOPE logos in navbar, hero, and footer",
   "projectName": "CGCT HOPE Vision 2036",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Save the uploaded CETA-2.png as a static asset at frontend/public/assets/generated/CETA-2.png and replace all broken CETA Galaxy logo image references in Navigation.tsx, HeroSection.tsx, and Footer.tsx with this new file path, preserving all existing sizing, positioning, and styling of those logo elements exactly as they appear in Version 9.",
+      "text": "Replace the existing CETA logo image with the newly uploaded CETA-3.png (CETA Galaxy Charitable Trust circular seal in dark red) in the navbar (Navigation.tsx), hero section (HeroSection.tsx), and footer (Footer.tsx), preserving the same size, position, and alt text as the previous logo in each location.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1",
-          "msg-2"
+          "msg-6",
+          "msg-7"
         ],
         "quotes": [
           "Simply replace the existing ones in the same spots",
-          "In Version 20, CETA logo is showing as a broken image icon",
-          "Replace broken logo images in the navbar, hero, and footer with the newly uploaded CETA-2.png"
+          "Draft Version 23 with exact CETA & HOPE new logos swapped into their original positions (navbar, hero, footer) while keeping everything else from Version 5 intact."
         ]
       },
       "acceptanceCriteria": [
-        "CETA-2.png is saved to frontend/public/assets/generated/CETA-2.png",
-        "The CETA Galaxy logo renders correctly (no broken image icon) in the Navigation/navbar",
-        "The CETA Galaxy logo renders correctly in the HeroSection",
-        "The CETA Galaxy logo renders correctly in the Footer",
-        "All other content, layout, and styling from Version 9 remains unchanged"
+        "The new CETA-3.png logo appears in the navbar where the old CETA logo was displayed",
+        "The new CETA-3.png logo appears in the hero section where the old CETA logo was displayed",
+        "The new CETA-3.png logo appears in the footer where the old CETA logo was displayed",
+        "No other visual or functional changes are made relative to Version 5"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Replace the existing HOPE logo image with the newly uploaded HOPE Logo_0-Photoroom-2.png (HOPE – Helping Outstanding Pupils in Education circular logo with cupped hands) in the navbar (Navigation.tsx), hero section (HeroSection.tsx), and footer (Footer.tsx), preserving the same size, position, and alt text as the previous logo in each location.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6",
+          "msg-7"
+        ],
+        "quotes": [
+          "Simply replace the existing ones in the same spots",
+          "Draft Version 23 with exact CETA & HOPE new logos swapped into their original positions (navbar, hero, footer) while keeping everything else from Version 5 intact."
+        ]
+      },
+      "acceptanceCriteria": [
+        "The new HOPE Logo_0-Photoroom-2.png logo appears in the navbar where the old HOPE logo was displayed",
+        "The new HOPE Logo_0-Photoroom-2.png logo appears in the hero section where the old HOPE logo was displayed",
+        "The new HOPE Logo_0-Photoroom-2.png logo appears in the footer where the old HOPE logo was displayed",
+        "No other visual or functional changes are made relative to Version 5"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Save CETA-3.png and HOPE Logo_0-Photoroom-2.png as static assets under frontend/public/assets/generated/ and reference them from Navigation.tsx, HeroSection.tsx, and Footer.tsx using their respective static asset paths.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "CETA Logo re-uploaded"
+        ]
+      },
+      "acceptanceCriteria": [
+        "CETA-3.png is accessible at frontend/public/assets/generated/CETA-3.png",
+        "HOPE logo is accessible at frontend/public/assets/generated/ with a clean filename",
+        "All three components reference these static paths correctly and images load without errors"
       ]
     }
   ],
   "constraints": [
-    "Use Version 9 as the base — do not carry over any other changes from Version 20",
-    "Only change the logo image source paths; do not alter sizing, layout, or any other styles"
+    "All other content, layout, styles, and functionality must remain identical to Version 5 — only the logo image sources are changed.",
+    "Do not modify any backend files.",
+    "Do not edit any files listed in frontend.immutablePaths."
   ],
   "nonGoals": [
-    "Changing any other images or assets",
-    "Modifying any text content or section layouts",
-    "Updating the HOPE logo or any other brand assets",
-    "Any backend changes"
+    "Resizing or repositioning logos beyond matching the existing dimensions of Version 5",
+    "Any content, copy, color, or layout changes beyond logo replacement",
+    "Adding new sections or modifying existing sections other than swapping logo src attributes"
   ],
   "imageRequirements": {
     "required": [],
