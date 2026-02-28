@@ -1,12 +1,9 @@
 # Specification
 
 ## Summary
-**Goal:** Replace the CETA and HOPE logo images in the navbar, hero section, and footer with newly uploaded versions, keeping all other content identical to Version 5.
+**Goal:** Update the footer attribution text to credit "Athira S" with the name rendered in italics.
 
 **Planned changes:**
-- Save `CETA-3.png` (CETA Galaxy Charitable Trust circular seal in dark red) as a static asset under `frontend/public/assets/generated/`
-- Save `HOPE Logo_0-Photoroom-2.png` (HOPE – Helping Outstanding Pupils in Education circular logo with cupped hands) as a static asset under `frontend/public/assets/generated/`
-- Update `Navigation.tsx`, `HeroSection.tsx`, and `Footer.tsx` to reference the new CETA logo image, preserving existing size, position, and alt text
-- Update `Navigation.tsx`, `HeroSection.tsx`, and `Footer.tsx` to reference the new HOPE logo image, preserving existing size, position, and alt text
+- In the Footer component, replace "Built with ❤️ using caffeine.ai" with "Built with ❤️ by Athira S", where "Athira S" is wrapped in an italic tag (`<em>` or `<i>`)
 
-**User-visible outcome:** The navbar, hero section, and footer now display the updated CETA Galaxy Charitable Trust and HOPE logos; everything else remains unchanged from Version 5.
+**User-visible outcome:** The footer now reads "Built with ❤️ by *Athira S*" with the name displayed in italic style; all other content remains unchanged.

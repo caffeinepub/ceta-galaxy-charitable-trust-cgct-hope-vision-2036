@@ -1,79 +1,36 @@
 {
   "kind": "build_request",
-  "title": "Draft Version 23: Swap CETA and HOPE logos in navbar, hero, and footer",
+  "title": "Update footer attribution to 'Built with ❤️ by Athira S' (italicized name)",
   "projectName": "CGCT HOPE Vision 2036",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Replace the existing CETA logo image with the newly uploaded CETA-3.png (CETA Galaxy Charitable Trust circular seal in dark red) in the navbar (Navigation.tsx), hero section (HeroSection.tsx), and footer (Footer.tsx), preserving the same size, position, and alt text as the previous logo in each location.",
+      "text": "In the Footer component, change the attribution text from 'Built with ❤️ using caffeine.ai' to 'Built with ❤️ by Athira S', where 'Athira S' is rendered in italic style. All other content, layout, and styling in the Footer must remain exactly as in Version 36.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-6",
-          "msg-7"
+          "msg-4"
         ],
         "quotes": [
-          "Simply replace the existing ones in the same spots",
-          "Draft Version 23 with exact CETA & HOPE new logos swapped into their original positions (navbar, hero, footer) while keeping everything else from Version 5 intact."
+          "Instead of \"Built with ❤️ using caffeine.ai\", Built with ❤️ by Athira S (Athira S in Italics)",
+          "Everything else stays exactly as it is in Version 36."
         ]
       },
       "acceptanceCriteria": [
-        "The new CETA-3.png logo appears in the navbar where the old CETA logo was displayed",
-        "The new CETA-3.png logo appears in the hero section where the old CETA logo was displayed",
-        "The new CETA-3.png logo appears in the footer where the old CETA logo was displayed",
-        "No other visual or functional changes are made relative to Version 5"
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "text": "Replace the existing HOPE logo image with the newly uploaded HOPE Logo_0-Photoroom-2.png (HOPE – Helping Outstanding Pupils in Education circular logo with cupped hands) in the navbar (Navigation.tsx), hero section (HeroSection.tsx), and footer (Footer.tsx), preserving the same size, position, and alt text as the previous logo in each location.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-6",
-          "msg-7"
-        ],
-        "quotes": [
-          "Simply replace the existing ones in the same spots",
-          "Draft Version 23 with exact CETA & HOPE new logos swapped into their original positions (navbar, hero, footer) while keeping everything else from Version 5 intact."
-        ]
-      },
-      "acceptanceCriteria": [
-        "The new HOPE Logo_0-Photoroom-2.png logo appears in the navbar where the old HOPE logo was displayed",
-        "The new HOPE Logo_0-Photoroom-2.png logo appears in the hero section where the old HOPE logo was displayed",
-        "The new HOPE Logo_0-Photoroom-2.png logo appears in the footer where the old HOPE logo was displayed",
-        "No other visual or functional changes are made relative to Version 5"
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "text": "Save CETA-3.png and HOPE Logo_0-Photoroom-2.png as static assets under frontend/public/assets/generated/ and reference them from Navigation.tsx, HeroSection.tsx, and Footer.tsx using their respective static asset paths.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-6"
-        ],
-        "quotes": [
-          "CETA Logo re-uploaded"
-        ]
-      },
-      "acceptanceCriteria": [
-        "CETA-3.png is accessible at frontend/public/assets/generated/CETA-3.png",
-        "HOPE logo is accessible at frontend/public/assets/generated/ with a clean filename",
-        "All three components reference these static paths correctly and images load without errors"
+        "Footer displays 'Built with ❤️ by Athira S' where 'Athira S' is wrapped in an <em> or italic tag",
+        "No other text, layout, colors, or components in the footer are changed",
+        "The rest of the page (Navigation, Hero, About, Vision Pillars, Reunion, Survey, Stakeholder Voices, Digital Impact sections) is unchanged"
       ]
     }
   ],
   "constraints": [
-    "All other content, layout, styles, and functionality must remain identical to Version 5 — only the logo image sources are changed.",
-    "Do not modify any backend files.",
-    "Do not edit any files listed in frontend.immutablePaths."
+    "Only the footer attribution text may be changed; no other modifications to any component"
   ],
   "nonGoals": [
-    "Resizing or repositioning logos beyond matching the existing dimensions of Version 5",
-    "Any content, copy, color, or layout changes beyond logo replacement",
-    "Adding new sections or modifying existing sections other than swapping logo src attributes"
+    "Changing any other section of the page",
+    "Modifying backend logic",
+    "Updating any translations or language context strings beyond the footer attribution"
   ],
   "imageRequirements": {
     "required": [],

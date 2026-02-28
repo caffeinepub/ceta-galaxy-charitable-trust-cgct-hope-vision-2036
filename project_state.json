@@ -1,42 +1,23 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Website project for CETA Galaxy Charitable Trust and HOPE (Helping Outstanding Pupils in Education) organizations. Building Draft Version 23 based on Version 5 with updated logos (CETA and HOPE) swapped into their original positions in the navbar, hero, and footer.",
-  "architectural_notes": [
-    "Project uses versioned drafts; Version 5 is the stable base, Version 23 builds on it with logo updates.",
-    "Logos appear in three locations: navbar, hero, and footer."
-  ],
+  "summary": "Alumni Reunion web project. Footer text updated to 'Built with ❤️ by Athira S' (Athira S in italics). Version 36 is the current baseline.",
+  "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-replace-the-existing-ceta-logo-image-with-the-newly-uploaded-ceta-3-png-ceta-galaxy-charitable-trust-circular-seal-in-dark-red-in-the-navbar-navigation-tsx-hero-section-herosection-tsx-and-footer-footer-tsx-preserving-the-same-size-position-and-alt-text-as-the-previous-logo-in-each-location",
-      "title": "Replace the existing CETA logo image with the newly uploaded CETA-3.png (CETA Galaxy Charitable Trust circular seal in dark red) in the navbar (Navigation.tsx), hero section (HeroSection.tsx), and footer (Footer.tsx), preserving the same size, position, and alt text as the previous logo in each location.",
+      "id": "feature-in-the-footer-component-change-the-attribution-text-from-built-with-using-caffeine-ai-to-built-with-by-athira-s-where-athira-s-is-rendered-in-italic-style-all-other-content-layout-and-styling-in-the-footer-must-remain-exactly-as-in-version-36",
+      "title": "In the Footer component, change the attribution text from 'Built with ❤️ using caffeine.ai' to 'Built with ❤️ by Athira S', where 'Athira S' is rendered in italic style. All other content, layout, and styling in the Footer must remain exactly as in Version 36.",
       "reqIds": [
         "REQ-1"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-replace-the-existing-hope-logo-image-with-the-newly-uploaded-hope-logo-0-photoroom-2-png-hope-helping-outstanding-pupils-in-education-circular-logo-with-cupped-hands-in-the-navbar-navigation-tsx-hero-section-herosection-tsx-and-footer-footer-tsx-preserving-the-same-size-position-and-alt-text-as-the-previous-logo-in-each-location",
-      "title": "Replace the existing HOPE logo image with the newly uploaded HOPE Logo_0-Photoroom-2.png (HOPE – Helping Outstanding Pupils in Education circular logo with cupped hands) in the navbar (Navigation.tsx), hero section (HeroSection.tsx), and footer (Footer.tsx), preserving the same size, position, and alt text as the previous logo in each location.",
-      "reqIds": [
-        "REQ-2"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-save-ceta-3-png-and-hope-logo-0-photoroom-2-png-as-static-assets-under-frontend-public-assets-generated-and-reference-them-from-navigation-tsx-herosection-tsx-and-footer-tsx-using-their-respective-static-asset-paths",
-      "title": "Save CETA-3.png and HOPE Logo_0-Photoroom-2.png as static assets under frontend/public/assets/generated/ and reference them from Navigation.tsx, HeroSection.tsx, and Footer.tsx using their respective static asset paths.",
-      "reqIds": [
-        "REQ-3"
       ],
       "version": 1
     }
   ],
   "new_feature_requests": [],
   "gameProjectType": "none",
-  "projectName": "CETA & HOPE Website",
+  "projectName": "Alumni Reunion",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

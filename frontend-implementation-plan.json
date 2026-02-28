@@ -1,75 +1,21 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Draft Version 23: Swap CETA and HOPE logos in navbar, hero, and footer",
+  "title": "Update footer attribution to 'Built with ❤️ by Athira S' (italicized name)",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Replace existing CETA logo with CETA-3.png in navbar, hero section, and footer",
+      "summary": "Change Footer attribution text from 'Built with ❤️ using caffeine.ai' to 'Built with ❤️ by Athira S' with 'Athira S' rendered in italic style, preserving all other Footer content and styling",
       "acceptanceCriteria": [
-        "The new CETA-3.png logo appears in the navbar where the old CETA logo was displayed",
-        "The new CETA-3.png logo appears in the hero section where the old CETA logo was displayed",
-        "The new CETA-3.png logo appears in the footer where the old CETA logo was displayed",
-        "No other visual or functional changes are made relative to Version 5"
+        "Footer displays 'Built with ❤️ by Athira S' where 'Athira S' is wrapped in an <em> or italic tag",
+        "No other text, layout, colors, or components in the footer are changed",
+        "The rest of the page (Navigation, Hero, About, Vision Pillars, Reunion, Survey, Stakeholder Voices, Digital Impact sections) is unchanged"
       ],
       "file_operations": [
-        {
-          "path": "frontend/src/components/Navigation.tsx",
-          "operation": "modify",
-          "description": "Update the CETA logo image source to reference frontend/public/assets/generated/CETA-3.png, preserving the existing size, position, className, and alt text. Locate the current CETA logo img element and replace only its src attribute."
-        },
-        {
-          "path": "frontend/src/components/HeroSection.tsx",
-          "operation": "modify",
-          "description": "Update the CETA logo image source to reference frontend/public/assets/generated/CETA-3.png, preserving the existing size, position, className, and alt text. Locate the current CETA logo img element within the logo row and replace only its src attribute."
-        },
         {
           "path": "frontend/src/components/Footer.tsx",
           "operation": "modify",
-          "description": "Update the CETA logo image source to reference frontend/public/assets/generated/CETA-3.png, preserving the existing size, position, className, and alt text. Locate the current CETA logo img element and replace only its src attribute."
-        }
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "summary": "Replace existing HOPE logo with HOPE Logo_0-Photoroom-2.png in navbar, hero section, and footer",
-      "acceptanceCriteria": [
-        "The new HOPE Logo_0-Photoroom-2.png logo appears in the navbar where the old HOPE logo was displayed",
-        "The new HOPE Logo_0-Photoroom-2.png logo appears in the hero section where the old HOPE logo was displayed",
-        "The new HOPE Logo_0-Photoroom-2.png logo appears in the footer where the old HOPE logo was displayed",
-        "No other visual or functional changes are made relative to Version 5"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/Navigation.tsx",
-          "operation": "modify",
-          "description": "Update the HOPE logo image source to reference frontend/public/assets/generated/HOPE_Logo_0-Photoroom-2.png, preserving the existing size, position, className, and alt text. Locate the current HOPE logo img element and replace only its src attribute."
-        },
-        {
-          "path": "frontend/src/components/HeroSection.tsx",
-          "operation": "modify",
-          "description": "Update the HOPE logo image source to reference frontend/public/assets/generated/HOPE_Logo_0-Photoroom-2.png, preserving the existing size, position, className, and alt text. Locate the current HOPE logo img element within the logo row and replace only its src attribute."
-        },
-        {
-          "path": "frontend/src/components/Footer.tsx",
-          "operation": "modify",
-          "description": "Update the HOPE logo image source to reference frontend/public/assets/generated/HOPE_Logo_0-Photoroom-2.png, preserving the existing size, position, className, and alt text. Locate the current HOPE logo img element and replace only its src attribute."
-        }
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "summary": "Verify CETA-3.png and HOPE Logo_0-Photoroom-2.png are available as static assets and components reference them correctly",
-      "acceptanceCriteria": [
-        "CETA-3.png is accessible at frontend/public/assets/generated/CETA-3.png",
-        "HOPE logo is accessible at frontend/public/assets/generated/ with a clean filename",
-        "All three components reference these static paths correctly and images load without errors"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/Navigation.tsx",
-          "operation": "modify",
-          "description": "Verify that both logo image paths are correctly set to frontend/public/assets/generated/CETA-3.png and frontend/public/assets/generated/HOPE_Logo_0-Photoroom-2.png after the updates in REQ-1 and REQ-2. Test that images load without 404 errors."
+          "description": "Update the attribution text in the Footer component from 'Built with ❤️ using caffeine.ai' to 'Built with ❤️ by Athira S', wrapping 'Athira S' in an <em> tag or using italic styling (font-style: italic). Ensure all other Footer content, layout, social media links, newsletter subscription form, CTA banner, action buttons, and contact details remain exactly as they are in the current version. Do not modify any other sections, styling, or component structure."
         }
       ]
     }

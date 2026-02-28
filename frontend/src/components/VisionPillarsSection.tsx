@@ -60,7 +60,7 @@ const VisionPillarsSection: React.FC = () => {
         {/* Header */}
         <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="inline-block px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-4" style={{ backgroundColor: 'rgba(107,26,26,0.1)', color: 'var(--maroon)' }}>
-            Strategic Framework
+            Proposals for Strategic Framework (Under Discussion)
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4" style={{ color: 'var(--maroon)', fontFamily: 'Merriweather, serif' }}>
             {t('vision.title')}

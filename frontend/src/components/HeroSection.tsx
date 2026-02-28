@@ -4,7 +4,7 @@ import { useCountdown } from '../hooks/useCountdown';
 import { useCountUp } from '../hooks/useCountUp';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import LeafMotif from './LeafMotif';
-import { Calendar, Users, BookOpen, Star } from 'lucide-react';
+import { Calendar, Users, BookOpen, Star, GraduationCap } from 'lucide-react';
 
 const CounterCard: React.FC<{
   icon: React.ReactNode;
@@ -14,20 +14,42 @@ const CounterCard: React.FC<{
   isNumeric?: boolean;
   target?: number;
   trigger?: boolean;
-}> = ({ icon, value, label, sub, isNumeric = false, target = 0, trigger = false }) => {
+  compact?: boolean;
+  labelLines?: string[];
+}> = ({ icon, value, label, sub, isNumeric = false, target = 0, trigger = false, compact = false, labelLines }) => {
   const count = useCountUp(target, 2000, trigger && isNumeric);
   const displayValue = isNumeric ? count : value;
 
   return (
-    <div className="flex flex-col items-center text-center p-4 rounded-2xl" style={{ background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(10px)', border: '1px solid rgba(201,168,76,0.3)' }}>
-      <div className="mb-2 p-2 rounded-full" style={{ backgroundColor: 'rgba(201,168,76,0.2)' }}>
+    <div
+      className={`flex flex-col items-center text-center rounded-2xl ${compact ? 'py-2 px-4 flex-row gap-3 justify-center' : 'p-4'}`}
+      style={{ background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(10px)', border: '1px solid rgba(201,168,76,0.3)' }}
+    >
+      <div className={`${compact ? '' : 'mb-2'} p-2 rounded-full flex-shrink-0`} style={{ backgroundColor: 'rgba(201,168,76,0.2)' }}>
         {icon}
       </div>
-      <div className="text-3xl lg:text-4xl font-black mb-1" style={{ color: 'var(--gold)', fontFamily: 'Merriweather, serif' }}>
-        {displayValue}
-      </div>
-      <div className="text-sm font-semibold text-white/90">{label}</div>
-      {sub && <div className="text-xs text-white/60 mt-1">{sub}</div>}
+      {compact ? (
+        <div className="flex flex-col items-center text-center">
+          <div className="text-2xl font-black" style={{ color: 'var(--gold)', fontFamily: 'Merriweather, serif' }}>
+            {displayValue}
+          </div>
+          {labelLines ? (
+            labelLines.map((line, i) => (
+              <div key={i} className="text-sm font-semibold text-white/90 leading-tight">{line}</div>
+            ))
+          ) : (
+            <div className="text-sm font-semibold text-white/90">{label}</div>
+          )}
+        </div>
+      ) : (
+        <>
+          <div className="text-3xl lg:text-4xl font-black mb-1" style={{ color: 'var(--gold)', fontFamily: 'Merriweather, serif' }}>
+            {displayValue}
+          </div>
+          <div className="text-sm font-semibold text-white/90">{label}</div>
+          {sub && <div className="text-xs text-white/60 mt-1">{sub}</div>}
+        </>
+      )}
     </div>
   );
 };
@@ -80,13 +102,13 @@ const HeroSection: React.FC = () => {
         {/* Logos row */}
         <div className="flex justify-center items-center gap-6 mb-8">
           <img
-            src="/assets/generated/CETA-3.png"
+            src="/assets/CETA-2.png"
             alt="CETA Galaxy"
             className="h-16 w-16 lg:h-20 lg:w-20 object-contain opacity-90"
           />
           <div className="h-12 w-px opacity-30" style={{ backgroundColor: 'var(--gold)' }} />
           <img
-            src="/assets/generated/HOPE_Logo_0-Photoroom-2.png"
+            src="/assets/HOPE Logo_0-Photoroom-1.png"
             alt="HOPE"
             className="h-16 w-16 lg:h-20 lg:w-20 object-contain opacity-90"
           />
@@ -109,38 +131,55 @@ const HeroSection: React.FC = () => {
         </div>
 
         {/* Animated Counters */}
-        <div className={`grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <CounterCard
-            icon={<Star size={20} style={{ color: 'var(--gold)' }} />}
-            value={15}
-            label={t('hero.counter1.label')}
-            isNumeric={true}
-            target={15}
-            trigger={isVisible}
-          />
-          <CounterCard
-            icon={<Users size={20} style={{ color: 'var(--gold)' }} />}
-            value={120}
-            label={t('hero.counter2.label')}
-            isNumeric={true}
-            target={120}
-            trigger={isVisible}
-          />
-          <CounterCard
-            icon={<BookOpen size={20} style={{ color: 'var(--gold)' }} />}
-            value={4}
-            label={t('hero.counter3.label')}
-            sub={t('hero.counter3.sub')}
-            isNumeric={true}
-            target={4}
-            trigger={isVisible}
-          />
-          <CounterCard
-            icon={<Calendar size={20} style={{ color: 'var(--gold)' }} />}
-            value={t('hero.counter4.value')}
-            label={t('hero.counter4.label')}
-            isNumeric={false}
-          />
+        <div className={`mb-10 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {/* Top row: 4 standard stat cards */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+            <CounterCard
+              icon={<Star size={20} style={{ color: 'var(--gold)' }} />}
+              value={15}
+              label={t('hero.counter1.label')}
+              isNumeric={true}
+              target={15}
+              trigger={isVisible}
+            />
+            <CounterCard
+              icon={<Users size={20} style={{ color: 'var(--gold)' }} />}
+              value={120}
+              label={t('hero.counter2.label')}
+              isNumeric={true}
+              target={120}
+              trigger={isVisible}
+            />
+            <CounterCard
+              icon={<BookOpen size={20} style={{ color: 'var(--gold)' }} />}
+              value={4}
+              label={t('hero.counter3.label')}
+              sub={t('hero.counter3.sub')}
+              isNumeric={true}
+              target={4}
+              trigger={isVisible}
+            />
+            <CounterCard
+              icon={<GraduationCap size={20} style={{ color: 'var(--gold)' }} />}
+              value={t('hero.counter5.value')}
+              label={t('hero.counter5.label')}
+              isNumeric={false}
+            />
+          </div>
+
+          {/* Bottom row: Alumni Reunion card spanning width of 2 stat boxes, reduced height */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="col-span-2 lg:col-span-2 lg:col-start-2">
+              <CounterCard
+                icon={<Calendar size={20} style={{ color: 'var(--gold)' }} />}
+                value={t('hero.counter4.value')}
+                label={t('hero.counter4.label')}
+                isNumeric={false}
+                compact={true}
+                labelLines={[t('hero.counter4.label')]}
+              />
+            </div>
+          </div>
         </div>
 
         {/* Countdown Timer */}

@@ -29,7 +29,6 @@ const Footer: React.FC = () => {
   };
 
   const year = new Date().getFullYear();
-  const appId = encodeURIComponent(typeof window !== 'undefined' ? window.location.hostname : 'cgct-hope-vision-2036');
 
   const socialLinks = [
     { Icon: SiFacebook, label: 'Facebook', href: 'https://www.facebook.com/Cetagalaxytrust' },
@@ -85,139 +84,208 @@ const Footer: React.FC = () => {
             >
               📊 {t('footer.btn.survey')}
             </button>
-            <a
-              href="mailto:info@cetagalaxytrust.com"
-              className="btn-outline-gold inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold"
+            <button
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold border-2 transition-all duration-200"
+              style={{ borderColor: 'var(--sage)', color: 'var(--sage)' }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--sage)';
+                (e.currentTarget as HTMLElement).style.color = 'white';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent';
+                (e.currentTarget as HTMLElement).style.color = 'var(--sage)';
+              }}
             >
-              ✉️ {t('footer.btn.contact')}
-            </a>
-            <a
-              href="https://www.facebook.com/Cetagalaxytrust"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline-gold inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold"
+              🤝 {t('footer.btn.volunteer')}
+            </button>
+            <button
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold border-2 transition-all duration-200"
+              style={{ borderColor: 'rgba(255,255,255,0.4)', color: 'rgba(255,255,255,0.8)' }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(255,255,255,0.1)';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent';
+              }}
             >
-              📣 {t('footer.btn.follow')}
-            </a>
+              💛 {t('footer.btn.support')}
+            </button>
           </div>
         </div>
       </div>
 
       {/* Main Footer Content */}
-      <div className="relative z-10 py-16 px-4" style={{ backgroundColor: 'var(--maroon-dark)' }}>
-        <div className="max-w-6xl mx-auto">
-          {/* Logos Row */}
-          <div className="flex justify-center items-center gap-8 mb-12">
-            <div className="flex flex-col items-center gap-2">
-              <img
-                src="/assets/generated/CETA-3.png"
-                alt="CETA Galaxy Charitable Trust"
-                className="h-20 w-20 object-contain opacity-90"
-              />
-              <p className="text-xs font-bold text-center" style={{ color: 'var(--gold)', fontFamily: 'Merriweather, serif' }}>
-                CETA Galaxy<br />Charitable Trust
-              </p>
-            </div>
-            <div className="h-16 w-px opacity-20" style={{ backgroundColor: 'var(--gold)' }} />
-            <div className="flex flex-col items-center gap-2">
-              <img
-                src="/assets/generated/HOPE_Logo_0-Photoroom-2.png"
-                alt="HOPE - Helping Outstanding Pupils in Education"
-                className="h-20 w-20 object-contain opacity-90"
-              />
-              <p className="text-xs font-bold text-center" style={{ color: 'var(--gold)', fontFamily: 'Merriweather, serif' }}>
-                HOPE<br />Scholarship Program
-              </p>
-            </div>
-          </div>
+      <div className="relative z-10 py-16 px-4" style={{ backgroundColor: '#2A0808' }}>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
-          {/* Footer Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
-            {/* Contact */}
-            <div>
-              <h3 className="text-base font-bold mb-4 uppercase tracking-widest" style={{ color: 'var(--gold)', fontFamily: 'Merriweather, serif' }}>
-                {t('footer.contact.title')}
+            {/* Column 1: Logos + About */}
+            <div className="lg:col-span-1">
+              <div className="flex items-center gap-3 mb-4">
+                <img
+                  src="/assets/CETA-2.png"
+                  alt="CETA Galaxy Charitable Trust"
+                  className="h-14 w-14 object-contain"
+                />
+                <img
+                  src="/assets/HOPE Logo_0-Photoroom-1.png"
+                  alt="HOPE - Helping Outstanding Pupils in Education"
+                  className="h-14 w-14 object-contain"
+                />
+              </div>
+              <h3
+                className="text-base font-black text-white mb-2"
+                style={{ fontFamily: 'Merriweather, serif' }}
+              >
+                CETA Galaxy Charitable Trust
               </h3>
-              <div className="space-y-3">
-                <a
-                  href="tel:+919447043838"
-                  className="flex items-center gap-3 text-sm text-white/70 hover:text-white transition-colors"
-                >
-                  <Phone size={14} style={{ color: 'var(--gold)' }} />
-                  +91 94470 43838
-                </a>
-                <a
-                  href="tel:+919447043939"
-                  className="flex items-center gap-3 text-sm text-white/70 hover:text-white transition-colors"
-                >
-                  <Phone size={14} style={{ color: 'var(--gold)' }} />
-                  +91 94470 43939
-                </a>
-                <a
-                  href="mailto:info@cetagalaxytrust.com"
-                  className="flex items-center gap-3 text-sm text-white/70 hover:text-white transition-colors"
-                >
-                  <Mail size={14} style={{ color: 'var(--gold)' }} />
-                  info@cetagalaxytrust.com
-                </a>
+              <p className="text-xs text-white/60 leading-relaxed mb-4">
+                Helping Outstanding Pupils in Education since 2010. Building futures, one student at a time.
+              </p>
+              {/* Social Icons */}
+              <div>
+                <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: 'var(--gold)' }}>
+                  {t('footer.social')}
+                </p>
+                <div className="flex gap-3">
+                  {socialLinks.map(({ Icon, label, href }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200"
+                      style={{ backgroundColor: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.6)' }}
+                      onMouseEnter={e => {
+                        (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--gold)';
+                        (e.currentTarget as HTMLElement).style.color = 'var(--maroon-dark)';
+                      }}
+                      onMouseLeave={e => {
+                        (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(255,255,255,0.08)';
+                        (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.6)';
+                      }}
+                    >
+                      <Icon size={16} />
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Social */}
+            {/* Column 2: Quick Links */}
             <div>
-              <h3 className="text-base font-bold mb-4 uppercase tracking-widest" style={{ color: 'var(--gold)', fontFamily: 'Merriweather, serif' }}>
-                {t('footer.social.title')}
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {socialLinks.map(({ Icon, label, href }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className="flex items-center justify-center w-10 h-10 rounded-full border transition-all duration-200"
-                    style={{ borderColor: 'rgba(201,168,76,0.3)', color: 'var(--gold)' }}
-                    onMouseEnter={e => {
-                      (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--gold)';
-                      (e.currentTarget as HTMLElement).style.color = 'var(--maroon-dark)';
-                    }}
-                    onMouseLeave={e => {
-                      (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent';
-                      (e.currentTarget as HTMLElement).style.color = 'var(--gold)';
-                    }}
-                  >
-                    <Icon size={16} />
-                  </a>
+              <h4
+                className="text-sm font-black mb-5 tracking-widest uppercase"
+                style={{ color: 'var(--gold)' }}
+              >
+                {t('footer.links.title')}
+              </h4>
+              <ul className="space-y-3">
+                {[
+                  { label: 'nav.home', href: '#home' },
+                  { label: 'nav.about', href: '#about' },
+                  { label: 'nav.vision', href: '#vision' },
+                  { label: 'nav.reunion', href: '#reunion' },
+                  { label: 'nav.survey', href: '#survey' },
+                ].map(link => (
+                  <li key={link.label}>
+                    <button
+                      onClick={() => {
+                        const el = document.querySelector(link.href);
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="text-sm text-white/60 hover:text-white transition-colors duration-200 text-left"
+                    >
+                      → {t(link.label)}
+                    </button>
+                  </li>
                 ))}
+              </ul>
+            </div>
+
+            {/* Column 3: Contact */}
+            <div>
+              <h4
+                className="text-sm font-black mb-5 tracking-widest uppercase"
+                style={{ color: 'var(--gold)' }}
+              >
+                {t('footer.contact.title')}
+              </h4>
+              <div className="space-y-4">
+                {/* Athira S first */}
+                <div className="flex items-start gap-3">
+                  <Phone size={16} style={{ color: 'var(--gold)', flexShrink: 0, marginTop: '2px' }} />
+                  <div>
+                    <p className="text-xs text-white/50 mb-1">Athira S</p>
+                    <a
+                      href="tel:+919544218988"
+                      className="text-sm text-white/80 hover:text-white transition-colors font-medium"
+                    >
+                      +91 9544218988
+                    </a>
+                  </div>
+                </div>
+                {/* Syam S second */}
+                <div className="flex items-start gap-3">
+                  <Phone size={16} style={{ color: 'var(--gold)', flexShrink: 0, marginTop: '2px' }} />
+                  <div>
+                    <p className="text-xs text-white/50 mb-1">Syam S</p>
+                    <a
+                      href="tel:+916282923370"
+                      className="text-sm text-white/80 hover:text-white transition-colors font-medium"
+                    >
+                      +91 6282923370
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Mail size={16} style={{ color: 'var(--gold)', flexShrink: 0, marginTop: '2px' }} />
+                  <div>
+                    <p className="text-xs text-white/50 mb-1">Email</p>
+                    <a
+                      href="mailto:info@cetagalaxytrust.com"
+                      className="text-sm text-white/80 hover:text-white transition-colors font-medium"
+                    >
+                      info@cetagalaxytrust.com
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Newsletter */}
+            {/* Column 4: Newsletter */}
             <div>
-              <h3 className="text-base font-bold mb-4 uppercase tracking-widest" style={{ color: 'var(--gold)', fontFamily: 'Merriweather, serif' }}>
+              <h4
+                className="text-sm font-black mb-5 tracking-widest uppercase"
+                style={{ color: 'var(--gold)' }}
+              >
                 {t('footer.newsletter.title')}
-              </h3>
+              </h4>
+              <p className="text-xs text-white/60 leading-relaxed mb-4">
+                {t('footer.newsletter.desc')}
+              </p>
               {submitted ? (
-                <div className="flex items-center gap-2 text-sm" style={{ color: 'var(--gold)' }}>
-                  <Heart size={16} fill="currentColor" />
-                  <span>{t('footer.newsletter.thanks')}</span>
+                <div
+                  className="rounded-xl p-4 text-sm font-semibold text-center"
+                  style={{ backgroundColor: 'rgba(106,143,90,0.2)', color: '#8FAF7E' }}
+                >
+                  ✓ {t('footer.newsletter.success')}
                 </div>
               ) : (
-                <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
+                <form onSubmit={handleSubscribe} className="space-y-3">
                   <input
                     type="email"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     placeholder={t('footer.newsletter.placeholder')}
-                    required
-                    className="px-4 py-2 rounded-full text-sm bg-white/10 border text-white placeholder-white/40 focus:outline-none focus:ring-2"
-                    style={{ borderColor: 'rgba(201,168,76,0.3)', focusRingColor: 'var(--gold)' } as React.CSSProperties}
+                    className="w-full px-4 py-2.5 rounded-xl text-sm bg-white/10 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-gold transition-colors"
+                    style={{ '--tw-ring-color': 'var(--gold)' } as React.CSSProperties}
                   />
                   <button
                     type="submit"
                     disabled={submitSubscription.isPending}
-                    className="btn-gold px-4 py-2 rounded-full text-sm font-bold disabled:opacity-60"
+                    className="w-full btn-gold py-2.5 rounded-xl text-sm font-bold disabled:opacity-60 transition-opacity"
                   >
                     {submitSubscription.isPending ? '...' : t('footer.newsletter.btn')}
                   </button>
@@ -225,23 +293,22 @@ const Footer: React.FC = () => {
               )}
             </div>
           </div>
+        </div>
+      </div>
 
-          {/* Divider */}
-          <div className="border-t mb-6" style={{ borderColor: 'rgba(201,168,76,0.15)' }} />
-
-          {/* Attribution & Copyright */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
-            <p>© {year} CETA Galaxy Charitable Trust. {t('footer.rights')}</p>
-            <a
-              href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${appId}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 hover:text-white/70 transition-colors"
-            >
-              Built with <Heart size={12} className="mx-0.5" style={{ color: 'var(--gold)' }} fill="var(--gold)" /> using caffeine.ai
-              <ExternalLink size={10} className="ml-0.5" />
-            </a>
-          </div>
+      {/* Bottom Bar */}
+      <div
+        className="relative z-10 py-5 px-4 border-t"
+        style={{ backgroundColor: '#1A0404', borderColor: 'rgba(255,255,255,0.08)' }}
+      >
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-white/40 text-center sm:text-left">
+            © {year} CETA Galaxy Charitable Trust. {t('footer.rights')}
+          </p>
+          <p className="text-xs text-white/40 flex items-center gap-1">
+            Built with <Heart size={12} className="text-red-400 fill-red-400 mx-0.5" /> by{' '}
+            <em className="text-white/60 not-italic" style={{ fontStyle: 'italic' }}>Athira S</em>
+          </p>
         </div>
       </div>
     </footer>

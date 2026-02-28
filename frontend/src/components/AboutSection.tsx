@@ -5,9 +5,9 @@ import LeafMotif from './LeafMotif';
 import { Globe, Users, Target, TrendingUp } from 'lucide-react';
 
 const timelineItems = [
-  { year: '2010', keyTitle: 'about.timeline.2010', keyDesc: 'about.timeline.2010.desc', icon: Globe, color: '#6B1A1A' },
-  { year: '2015', keyTitle: 'about.timeline.2015', keyDesc: 'about.timeline.2015.desc', icon: Users, color: '#C9A84C' },
-  { year: '2020', keyTitle: 'about.timeline.2020', keyDesc: 'about.timeline.2020.desc', icon: Target, color: '#8FAF7E' },
+  { year: '2011', keyTitle: 'about.timeline.2010', keyDesc: 'about.timeline.2010.desc', icon: Globe, color: '#6B1A1A' },
+  { year: '2016', keyTitle: 'about.timeline.2016', keyDesc: 'about.timeline.2016.desc', icon: Target, color: '#8FAF7E' },
+  { year: '2017', keyTitle: 'about.timeline.2017', keyDesc: 'about.timeline.2017.desc', icon: Users, color: '#C9A84C' },
   { year: '2026', keyTitle: 'about.timeline.2026', keyDesc: 'about.timeline.2026.desc', icon: TrendingUp, color: '#6B1A1A' },
 ];
 
