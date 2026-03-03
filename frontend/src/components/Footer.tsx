@@ -4,12 +4,14 @@ import { useSubmitSubscription } from '../hooks/useQueries';
 import { Phone, Mail, Heart, ExternalLink } from 'lucide-react';
 import { SiFacebook, SiInstagram, SiLinkedin, SiYoutube } from 'react-icons/si';
 import LeafMotif from './LeafMotif';
+import { useNavigate } from '@tanstack/react-router';
 
 const Footer: React.FC = () => {
   const { t } = useLanguage();
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const submitSubscription = useSubmitSubscription();
+  const navigate = useNavigate();
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,9 +25,8 @@ const Footer: React.FC = () => {
     }
   };
 
-  const scrollToSurvey = () => {
-    const el = document.getElementById('survey');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  const handleSurveyClick = () => {
+    navigate({ to: '/survey' });
   };
 
   const year = new Date().getFullYear();
@@ -79,12 +80,15 @@ const Footer: React.FC = () => {
               🎓 {t('footer.btn.register')}
             </a>
             <button
-              onClick={scrollToSurvey}
+              onClick={handleSurveyClick}
               className="btn-outline-gold inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold"
             >
               📊 {t('footer.btn.survey')}
             </button>
-            <button
+            <a
+              href="https://forms.gle/TPV1MG3VDBqB9CKdA"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold border-2 transition-all duration-200"
               style={{ borderColor: 'var(--sage)', color: 'var(--sage)' }}
               onMouseEnter={e => {
@@ -97,8 +101,11 @@ const Footer: React.FC = () => {
               }}
             >
               🤝 {t('footer.btn.volunteer')}
-            </button>
-            <button
+            </a>
+            <a
+              href="https://forms.gle/BjTJEkhm5rxguZJA7"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold border-2 transition-all duration-200"
               style={{ borderColor: 'rgba(255,255,255,0.4)', color: 'rgba(255,255,255,0.8)' }}
               onMouseEnter={e => {
@@ -109,7 +116,7 @@ const Footer: React.FC = () => {
               }}
             >
               💛 {t('footer.btn.support')}
-            </button>
+            </a>
           </div>
         </div>
       </div>

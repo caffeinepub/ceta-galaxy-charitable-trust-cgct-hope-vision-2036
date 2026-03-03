@@ -5,6 +5,7 @@ import { useCountUp } from '../hooks/useCountUp';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import LeafMotif from './LeafMotif';
 import { Calendar, Users, BookOpen, Star, GraduationCap } from 'lucide-react';
+import { useNavigate } from '@tanstack/react-router';
 
 const CounterCard: React.FC<{
   icon: React.ReactNode;
@@ -58,10 +59,15 @@ const HeroSection: React.FC = () => {
   const { t } = useLanguage();
   const countdown = useCountdown();
   const { ref, isVisible } = useIntersectionObserver(0.1);
+  const navigate = useNavigate();
 
   const scrollToSurvey = () => {
     const el = document.getElementById('survey');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleSurveyClick = () => {
+    navigate({ to: '/survey' });
   };
 
   const countdownBoxes = [
@@ -210,7 +216,7 @@ const HeroSection: React.FC = () => {
             🎓 {t('hero.btn.register')}
           </a>
           <button
-            onClick={scrollToSurvey}
+            onClick={handleSurveyClick}
             className="btn-outline-gold inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-bold"
           >
             📊 {t('hero.btn.survey')}

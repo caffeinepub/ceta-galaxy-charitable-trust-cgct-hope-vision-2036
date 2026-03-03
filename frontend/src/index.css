@@ -59,6 +59,13 @@
     @apply border-border;
   }
 
+  html, body {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    background-color: var(--cream);
+  }
+
   html {
     scroll-behavior: smooth;
   }
@@ -67,6 +74,10 @@
     font-family: 'Inter', sans-serif;
     @apply bg-background text-foreground;
     overflow-x: hidden;
+  }
+
+  #root {
+    background-color: var(--cream);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -260,6 +271,16 @@
     transform: scale(1.05);
   }
 
+  /* Gallery card */
+  .gallery-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gallery-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(107, 26, 26, 0.2);
+  }
+
   /* Scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
@@ -311,5 +332,21 @@
 
   .float-anim {
     animation: float 4s ease-in-out infinite;
+  }
+
+  /* Survey page entry animation */
+  .survey-page-enter {
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }

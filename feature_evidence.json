@@ -2,10 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-in-the-footer-component-change-the-attribution-text-from-built-with-using-caffeine-ai-to-built-with-by-athira-s-where-athira-s-is-rendered-in-italic-style-all-other-content-layout-and-styling-in-the-footer-must-remain-exactly-as-in-version-36",
-      "featureTitle": "In the Footer component, change the attribution text from 'Built with ❤️ using caffeine.ai' to 'Built with ❤️ by Athira S', where 'Athira S' is rendered in italic style. All other content, layout, and styling in the Footer must remain exactly as in Version 36.",
+      "featureId": "feature-remove-the-black-empty-space-screen-that-appears-below-the-footer-2026-ceta-galaxy-charitable-trust-all-rights-reserved-built-with-by-athira-s-in-desktop-view-ensure-the-page-ends-cleanly-at-the-footer-with-no-extra-background-overflow-or-height-causing-a-black-region-beneath-it",
+      "featureTitle": "Remove the black empty space/screen that appears below the footer ('© 2026 CETA Galaxy Charitable Trust. All rights reserved. Built with ❤️ by Athira S') in desktop view. Ensure the page ends cleanly at the footer with no extra background, overflow, or height causing a black region beneath it.",
       "files": [
-        "frontend/src/components/Footer.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/index.css"
       ],
       "components": [
         "authorization@4.0.0",
@@ -13,7 +14,8 @@
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "blob-storage@4.0.0"
       ],
       "testIds": [
         "REQ-1"

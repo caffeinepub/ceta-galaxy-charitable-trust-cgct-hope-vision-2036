@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-27T12:49:02.679Z",
+  "generatedAt": "2026-03-02T16:11:59.324Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -12,13 +12,16 @@
     "items": [
       {
         "id": "REQ-1",
-        "summary": "In the Footer component, change the attribution text from 'Built with ❤️ using caffeine.ai' to 'Built with ❤️ by Athira S', where 'Athira S' is rendered in italic style. All other content, layout, and styling in the Footer must remain exactly as in Version 36.",
+        "summary": "Remove the black empty space/screen that appears below the footer ('© 2026 CETA Galaxy Charitable Trust. All rights reserved. Built with ❤️ by Athira S') in desktop view. Ensure the page ends cleanly at the footer with no extra background, overflow, or height causing a black region beneath it.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/Footer.tsx"
+          "frontend/src/App.tsx",
+          "frontend/src/components/Footer.tsx",
+          "frontend/src/index.css"
         ],
         "matchedFiles": [
-          "frontend/src/components/Footer.tsx"
+          "frontend/src/App.tsx",
+          "frontend/src/index.css"
         ]
       }
     ]
@@ -28,7 +31,8 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/components/Footer.tsx",
+    "frontend/src/App.tsx",
+    "frontend/src/index.css",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

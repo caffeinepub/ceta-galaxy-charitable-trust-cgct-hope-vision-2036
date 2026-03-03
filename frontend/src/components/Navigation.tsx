@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X, Globe, Images } from 'lucide-react';
+import { useNavigate, useLocation } from '@tanstack/react-router';
 
 const Navigation: React.FC = () => {
-  const { t, toggleLanguage, language } = useLanguage();
+  const { t, toggleLanguage } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -24,10 +29,22 @@ const Navigation: React.FC = () => {
 
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+    if (!isHome) {
+      navigate({ to: '/' }).then(() => {
+        setTimeout(() => {
+          const el = document.querySelector(href);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      });
+    } else {
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleGalleryClick = () => {
+    setMobileOpen(false);
+    navigate({ to: '/gallery' });
   };
 
   return (
@@ -42,7 +59,7 @@ const Navigation: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Left Logo - CETA Galaxy */}
-          <div className="flex items-center gap-2 flex-shrink-0">
+          <div className="flex items-center gap-2 shrink-0">
             <img
               src="/assets/CETA-2.png"
               alt="CETA Galaxy Charitable Trust"
@@ -86,10 +103,32 @@ const Navigation: React.FC = () => {
                 {t(link.key)}
               </button>
             ))}
+            {/* Gallery Tab */}
+            <button
+              onClick={handleGalleryClick}
+              className="flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 hover:text-white"
+              style={{
+                color: location.pathname === '/gallery' ? 'white' : 'var(--maroon)',
+                backgroundColor: location.pathname === '/gallery' ? 'var(--maroon)' : 'transparent',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--maroon)';
+                (e.currentTarget as HTMLElement).style.color = 'white';
+              }}
+              onMouseLeave={e => {
+                if (location.pathname !== '/gallery') {
+                  (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent';
+                  (e.currentTarget as HTMLElement).style.color = 'var(--maroon)';
+                }
+              }}
+            >
+              <Images size={14} />
+              Gallery
+            </button>
           </div>
 
           {/* Right: Language Toggle + HOPE Logo + Mobile Menu */}
-          <div className="flex items-center gap-2 flex-shrink-0">
+          <div className="flex items-center gap-2 shrink-0">
             {/* Language Toggle */}
             <button
               onClick={toggleLanguage}
@@ -159,6 +198,21 @@ const Navigation: React.FC = () => {
                   {t(link.key)}
                 </button>
               ))}
+              {/* Gallery in mobile menu */}
+              <button
+                onClick={handleGalleryClick}
+                className="w-full text-left px-4 py-3 text-sm font-medium transition-colors flex items-center gap-2"
+                style={{ color: 'var(--maroon)' }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--off-white)';
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent';
+                }}
+              >
+                <Images size={14} />
+                Gallery
+              </button>
             </div>
           </div>
         )}

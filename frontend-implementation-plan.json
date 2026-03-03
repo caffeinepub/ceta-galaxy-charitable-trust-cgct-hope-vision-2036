@@ -1,21 +1,32 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Update footer attribution to 'Built with ❤️ by Athira S' (italicized name)",
+  "title": "Remove black screen below footer in desktop view",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Change Footer attribution text from 'Built with ❤️ using caffeine.ai' to 'Built with ❤️ by Athira S' with 'Athira S' rendered in italic style, preserving all other Footer content and styling",
+      "summary": "Remove the black empty space/screen that appears below the footer in desktop view, ensuring the page ends cleanly at the footer with no extra background or overflow",
       "acceptanceCriteria": [
-        "Footer displays 'Built with ❤️ by Athira S' where 'Athira S' is wrapped in an <em> or italic tag",
-        "No other text, layout, colors, or components in the footer are changed",
-        "The rest of the page (Navigation, Hero, About, Vision Pillars, Reunion, Survey, Stakeholder Voices, Digital Impact sections) is unchanged"
+        "In desktop view, no black or dark empty space is visible below the footer.",
+        "The page ends at the bottom edge of the footer element with no extra space.",
+        "The fix does not affect mobile layout or any other sections of the page.",
+        "The footer content ('© 2026 CETA Galaxy Charitable Trust. All rights reserved. Built with ❤️ by Athira S') remains fully visible and unaffected."
       ],
       "file_operations": [
         {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Inspect the root layout container structure and remove any minimum height constraints, flex properties, or background colors that may be causing extra black space below the footer. Ensure the main content wrapper uses natural content height (min-h-0 or h-auto) rather than min-h-screen or full viewport height, so the page ends naturally at the footer without forcing additional height."
+        },
+        {
           "path": "frontend/src/components/Footer.tsx",
           "operation": "modify",
-          "description": "Update the attribution text in the Footer component from 'Built with ❤️ using caffeine.ai' to 'Built with ❤️ by Athira S', wrapping 'Athira S' in an <em> tag or using italic styling (font-style: italic). Ensure all other Footer content, layout, social media links, newsletter subscription form, CTA banner, action buttons, and contact details remain exactly as they are in the current version. Do not modify any other sections, styling, or component structure."
+          "description": "Review the Footer component for any absolute/fixed positioning, excessive padding/margin, or background color inheritance issues that might create black space below it. Ensure the footer uses relative positioning, proper bottom padding, and that no parent containers are adding unwanted height. Verify that the footer background color extends fully to the bottom edge without gaps."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Check global styles for body and html elements that may impose minimum heights (min-h-screen), background colors on body/root that differ from footer, or overflow properties causing extra scrollable space. Remove or adjust any global styles that force the viewport to extend beyond the natural content height. Ensure consistent background colors across body, #root, and the app container to eliminate visual black space."
         }
       ]
     }

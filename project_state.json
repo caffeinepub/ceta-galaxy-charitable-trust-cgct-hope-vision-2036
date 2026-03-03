@@ -1,14 +1,16 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Alumni Reunion web project. Footer text updated to 'Built with ❤️ by Athira S' (Athira S in italics). Version 36 is the current baseline.",
+  "summary": "Website project for CETA Galaxy Charitable Trust. Fixing UI issues including black screen below footer in desktop view.",
   "architectural_notes": [],
-  "known_issues": [],
-  "isFixRequest": false,
+  "known_issues": [
+    "Black screen/empty space appears below footer in desktop view"
+  ],
+  "isFixRequest": true,
   "existing_features": [
     {
-      "id": "feature-in-the-footer-component-change-the-attribution-text-from-built-with-using-caffeine-ai-to-built-with-by-athira-s-where-athira-s-is-rendered-in-italic-style-all-other-content-layout-and-styling-in-the-footer-must-remain-exactly-as-in-version-36",
-      "title": "In the Footer component, change the attribution text from 'Built with ❤️ using caffeine.ai' to 'Built with ❤️ by Athira S', where 'Athira S' is rendered in italic style. All other content, layout, and styling in the Footer must remain exactly as in Version 36.",
+      "id": "feature-remove-the-black-empty-space-screen-that-appears-below-the-footer-2026-ceta-galaxy-charitable-trust-all-rights-reserved-built-with-by-athira-s-in-desktop-view-ensure-the-page-ends-cleanly-at-the-footer-with-no-extra-background-overflow-or-height-causing-a-black-region-beneath-it",
+      "title": "Remove the black empty space/screen that appears below the footer ('© 2026 CETA Galaxy Charitable Trust. All rights reserved. Built with ❤️ by Athira S') in desktop view. Ensure the page ends cleanly at the footer with no extra background, overflow, or height causing a black region beneath it.",
       "reqIds": [
         "REQ-1"
       ],
@@ -17,7 +19,7 @@
   ],
   "new_feature_requests": [],
   "gameProjectType": "none",
-  "projectName": "Alumni Reunion",
+  "projectName": "CETA Galaxy Charitable Trust",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

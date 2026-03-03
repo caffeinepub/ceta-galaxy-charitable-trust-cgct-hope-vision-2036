@@ -1,36 +1,37 @@
 {
   "kind": "build_request",
-  "title": "Update footer attribution to 'Built with ❤️ by Athira S' (italicized name)",
-  "projectName": "CGCT HOPE Vision 2036",
+  "title": "Remove black screen below footer in desktop view",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "In the Footer component, change the attribution text from 'Built with ❤️ using caffeine.ai' to 'Built with ❤️ by Athira S', where 'Athira S' is rendered in italic style. All other content, layout, and styling in the Footer must remain exactly as in Version 36.",
+      "text": "Remove the black empty space/screen that appears below the footer ('© 2026 CETA Galaxy Charitable Trust. All rights reserved. Built with ❤️ by Athira S') in desktop view. Ensure the page ends cleanly at the footer with no extra background, overflow, or height causing a black region beneath it.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "msg-1",
+          "msg-2"
         ],
         "quotes": [
-          "Instead of \"Built with ❤️ using caffeine.ai\", Built with ❤️ by Athira S (Athira S in Italics)",
-          "Everything else stays exactly as it is in Version 36."
+          "Below this footer © 2026 CETA Galaxy Charitable Trust. All rights reserved.    Built with ❤️ by Athira S, there is a black screen in desktop view. Please remove it."
         ]
       },
       "acceptanceCriteria": [
-        "Footer displays 'Built with ❤️ by Athira S' where 'Athira S' is wrapped in an <em> or italic tag",
-        "No other text, layout, colors, or components in the footer are changed",
-        "The rest of the page (Navigation, Hero, About, Vision Pillars, Reunion, Survey, Stakeholder Voices, Digital Impact sections) is unchanged"
+        "In desktop view, no black or dark empty space is visible below the footer.",
+        "The page ends at the bottom edge of the footer element with no extra space.",
+        "The fix does not affect mobile layout or any other sections of the page.",
+        "The footer content ('© 2026 CETA Galaxy Charitable Trust. All rights reserved. Built with ❤️ by Athira S') remains fully visible and unaffected."
       ]
     }
   ],
   "constraints": [
-    "Only the footer attribution text may be changed; no other modifications to any component"
+    "Do not alter the footer content or styling beyond removing the black space.",
+    "Do not modify immutable frontend paths (hooks, main.tsx, ui components)."
   ],
   "nonGoals": [
-    "Changing any other section of the page",
-    "Modifying backend logic",
-    "Updating any translations or language context strings beyond the footer attribution"
+    "Redesigning the footer layout or content.",
+    "Changing any other section of the page.",
+    "Modifying backend logic."
   ],
   "imageRequirements": {
     "required": [],
